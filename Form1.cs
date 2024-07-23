@@ -65,13 +65,13 @@ public partial class mainMenu : Form
             if (Settings1.Default.overridepic == true)
             {
                 pblist[selectedfront].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugfront.jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
-                pblist[selectedfront].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugSide.jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
+                pblist[selectedside].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugSide.jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
 
             }
             else
             {
                 pblist[selectedfront].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugfront"+ DateTime.Now.ToString("yyyyMMddHHmmss")+ ".jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
-                pblist[selectedfront].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugSide" +DateTime.Now.ToString("yyyyMMddHHmmss") +".jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
+                pblist[selectedside].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugSide" +DateTime.Now.ToString("yyyyMMddHHmmss") +".jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
 
             }
         }

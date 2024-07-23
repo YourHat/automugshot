@@ -46,5 +46,17 @@ namespace automugshot {
                 this["overridepic"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int cameraindex {
+            get {
+                return ((int)(this["cameraindex"]));
+            }
+            set {
+                this["cameraindex"] = value;
+            }
+        }
     }
 }

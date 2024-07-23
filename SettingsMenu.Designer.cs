@@ -38,6 +38,8 @@
             label3 = new Label();
             folderBrowserDialog1 = new FolderBrowserDialog();
             label4 = new Label();
+            cameralistbox = new ListBox();
+            label5 = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,7 +69,7 @@
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton1);
             groupBox1.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(43, 128);
+            groupBox1.Location = new Point(43, 131);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(232, 114);
             groupBox1.TabIndex = 2;
@@ -109,7 +111,7 @@
             // saveSettingsButton
             // 
             saveSettingsButton.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            saveSettingsButton.Location = new Point(830, 188);
+            saveSettingsButton.Location = new Point(830, 338);
             saveSettingsButton.Name = "saveSettingsButton";
             saveSettingsButton.Size = new Size(141, 54);
             saveSettingsButton.TabIndex = 4;
@@ -130,19 +132,40 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Stencil", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Stencil", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Green;
-            label4.Location = new Point(641, 97);
+            label4.Location = new Point(573, 144);
             label4.Name = "label4";
-            label4.Size = new Size(143, 42);
+            label4.Size = new Size(255, 76);
             label4.TabIndex = 6;
             label4.Text = "saved!";
+            // 
+            // cameralistbox
+            // 
+            cameralistbox.FormattingEnabled = true;
+            cameralistbox.ItemHeight = 15;
+            cameralistbox.Location = new Point(43, 283);
+            cameralistbox.Name = "cameralistbox";
+            cameralistbox.Size = new Size(232, 109);
+            cameralistbox.TabIndex = 7;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(43, 266);
+            label5.Name = "label5";
+            label5.Size = new Size(52, 14);
+            label5.TabIndex = 8;
+            label5.Text = "Camera";
             // 
             // saveSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(983, 254);
+            ClientSize = new Size(983, 404);
+            Controls.Add(label5);
+            Controls.Add(cameralistbox);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(saveSettingsButton);
@@ -152,6 +175,7 @@
             Controls.Add(label1);
             Name = "saveSettings";
             Text = "SettingsMenu";
+            Load += saveSettings_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -170,5 +194,7 @@
         private Label label3;
         private FolderBrowserDialog folderBrowserDialog1;
         private Label label4;
+        private ListBox cameralistbox;
+        private Label label5;
     }
 }

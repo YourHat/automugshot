@@ -84,9 +84,9 @@
             label5.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(1012, 481);
             label5.Name = "label5";
-            label5.Size = new Size(192, 16);
+            label5.Size = new Size(221, 16);
             label5.TabIndex = 4;
-            label5.Text = "Designer - Yutaroh Tanaka";
+            label5.Text = "Developed By - Yutaroh Tanaka";
             // 
             // label6
             // 

@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Emgu.CV;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Hompus.VideoInputDevices;
 
 namespace automugshot
 {
@@ -12,18 +15,29 @@ namespace automugshot
         public List<Bitbool> takefrontpic()
         {
             var fourcams = new List<Bitbool>();
-            Bitmap result = new Bitmap(115, 150);
-            using (Graphics graph = Graphics.FromImage(result))
-            {
-                Rectangle ImageSize = new Rectangle(0, 0, 115, 150);
-                graph.FillRectangle(Brushes.Blue, ImageSize);
-            }
-           
+            //Bitmap result = new Bitmap(115, 150);
+            VideoCapture capturedimage = new VideoCapture(Settings1.Default.cameraindex);
+            Bitmap result = capturedimage.QueryFrame().ToBitmap();
+            //using (Graphics graph = Graphics.FromImage(result))
+            //
+            //    Rectangle ImageSize = new Rectangle(0, 0, 115, 150);
+            //    graph.FillRectangle(Brushes.Blue, ImageSize);
+            //}
+            //using (var sde = new SystemDeviceEnumerator())
+            //{
+            //    var devices = sde.ListVideoInputDevice();
+            //    Console.WriteLine(devices.Count);
+            //    //var index = devices.First(d => d.Value == "Cam Link 4K").Key;
+            //    capturedimage = new VideoCapture(1);
+            //}
 
-            fourcams.Add(new Bitbool(true, result));
-            fourcams.Add(new Bitbool(false, result));
-            fourcams.Add(new Bitbool(true, result));
-            fourcams.Add(new Bitbool(true, result));
+            fourcams.Add(new Bitbool(true, capturedimage.QueryFrame().ToBitmap()));
+            System.Threading.Thread.Sleep(500);
+            fourcams.Add(new Bitbool(false, capturedimage.QueryFrame().ToBitmap()));
+            System.Threading.Thread.Sleep(500);
+            fourcams.Add(new Bitbool(true, capturedimage.QueryFrame().ToBitmap()));
+            System.Threading.Thread.Sleep(500);
+            fourcams.Add(new Bitbool(true, capturedimage.QueryFrame().ToBitmap()));
 
             return fourcams;
         }
