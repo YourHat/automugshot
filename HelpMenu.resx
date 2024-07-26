@@ -119,14 +119,15 @@
   </resheader>
   <data name="label8.Text" xml:space="preserve">
     <value>Take mugshots by clicking take pictures button.
-Ones that are good for mugshots (eyes opened, head not tilted, etc) will be highlited with green. 
+Ones that are good for mugshots (eyes open, head not tilted, etc) will be highlited with green. 
 Ones that are not good for mugshots will be highlighted with red.
 
-click good one from both front and side and hit save button to save the mugshots. 
+click good mugshots from both front and side and hit save button to save the mugshots. 
 
-click new button to start new mugshots process.
+click new button to start new mugshot process.
  
 By going to settings menu, you can change the file path for the mugshots. 
-You can also decide if you want to override mugshots everytime or keep all the mugshots taken.</value>
+You can also decide if you want to override mugshots each time or keep every mugshots taken.
+You can select the camera you want to use in the settings menu.</value>
   </data>
 </root>

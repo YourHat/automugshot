@@ -65,9 +65,9 @@
             label3.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Point(66, 122);
             label3.Name = "label3";
-            label3.Size = new Size(1113, 19);
+            label3.Size = new Size(1002, 19);
             label3.TabIndex = 2;
-            label3.Text = "This software makes it really easy to take mugshots by takeing pictures of Mugshot automatically and resizing them for you. ";
+            label3.Text = "This software makes it simple to take mugshots by taking the Mugshots automatically and resizing them for you. ";
             // 
             // label4
             // 
@@ -114,7 +114,7 @@
             label8.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.Location = new Point(72, 254);
             label8.Name = "label8";
-            label8.Size = new Size(853, 190);
+            label8.Size = new Size(834, 209);
             label8.TabIndex = 7;
             label8.Text = resources.GetString("label8.Text");
             // 

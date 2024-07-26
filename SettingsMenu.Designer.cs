@@ -60,7 +60,7 @@
             changePathButton.Name = "changePathButton";
             changePathButton.Size = new Size(281, 23);
             changePathButton.TabIndex = 1;
-            changePathButton.Text = "Change the Folder Path to Save Mughshots";
+            changePathButton.Text = "Change Folder Path to Save Mughshots";
             changePathButton.UseVisualStyleBackColor = true;
             changePathButton.Click += changePathButton_Click;
             // 
@@ -155,9 +155,9 @@
             label5.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.Location = new Point(43, 266);
             label5.Name = "label5";
-            label5.Size = new Size(52, 14);
+            label5.Size = new Size(59, 14);
             label5.TabIndex = 8;
-            label5.Text = "Camera";
+            label5.Text = "Cameras";
             // 
             // saveSettings
             // 

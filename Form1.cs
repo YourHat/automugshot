@@ -49,7 +49,7 @@ public partial class mainMenu : Form
     private void newPic_Click(object sender, EventArgs e)
     {
         // reset pictures
-        for(int i = 0; i < lpblist.Count; i++)
+        for (int i = 0; i < lpblist.Count; i++)
         {
             pblist[i].Image = null;
             lpblist[i].Visible = false;
@@ -70,8 +70,8 @@ public partial class mainMenu : Form
             }
             else
             {
-                pblist[selectedfront].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugfront"+ DateTime.Now.ToString("yyyyMMddHHmmss")+ ".jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
-                pblist[selectedside].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugSide" +DateTime.Now.ToString("yyyyMMddHHmmss") +".jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
+                pblist[selectedfront].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugfront" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
+                pblist[selectedside].Image.Save(@"" + Settings1.Default.filepathforpic + "\\mugSide" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".jpeg", System.Drawing.Imaging.ImageFormat.Bmp);
 
             }
         }
@@ -208,4 +208,6 @@ public partial class mainMenu : Form
         selist[selectedside].Visible = true;
 
     }
+
+
 }
