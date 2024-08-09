@@ -101,6 +101,7 @@ public partial class mainMenu : Form
         //take picture of the side
         //take four
         //if good, green line, not good then red line
+        /*
         var sidepictures = takepics.takesidepic();
         for (int i = 0; i < sidepictures.Count; i++)
         {
@@ -118,6 +119,7 @@ public partial class mainMenu : Form
             }
             lpblist[i + 4].Visible = true;
         }
+        */
     }
 
     private void takeFrontPic_Click(object sender, EventArgs e)
@@ -127,7 +129,7 @@ public partial class mainMenu : Form
         //if good, green line, not good then red line
 
 
-
+        /*
         var frontpictures = takepics.takefrontpic();
         for (int i = 0; i < frontpictures.Count; i++)
         {
@@ -144,7 +146,7 @@ public partial class mainMenu : Form
                 lpblist[i].ForeColor = Color.Red;
             }
             lpblist[i].Visible = true;
-        }
+        }*/
     }
 
     private void pictureBox1_Click(object sender, EventArgs e)
