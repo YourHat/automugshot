@@ -1,3 +1,4 @@
+using Emgu.CV;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 
@@ -6,17 +7,21 @@ namespace automugshot;
 public partial class mainMenu : Form
 {
 
-    Takepicture takepics;
+    FrontMugshot[] FrontMugs;
+    SideMugshot[] SideMugs;
     int selectedfront = 9;
     int selectedside = 9;
     List<PictureBox> pblist = new List<PictureBox>();
     List<Label> lpblist = new List<Label>();
     List<Label> selist = new List<Label>();
 
+    public VideoCapture capturedimage = new VideoCapture(Settings1.Default.cameraindex);
+
     public mainMenu()
     {
         InitializeComponent();
-        takepics = new Takepicture();
+        FrontMugs = new FrontMugshot[4];
+        SideMugs = new SideMugshot[4];
         pblist.Add(pictureBox1);
         pblist.Add(pictureBox2);
         pblist.Add(pictureBox3);
@@ -44,6 +49,7 @@ public partial class mainMenu : Form
         selist.Add(sp6);
         selist.Add(sp7);
         selist.Add(sp8);
+        
     }
 
     private void newPic_Click(object sender, EventArgs e)
@@ -75,6 +81,7 @@ public partial class mainMenu : Form
 
             }
         }
+        System.Diagnostics.Debug.WriteLine("Mugshot Saved");
     }
 
     private void settingsMenu_Click(object sender, EventArgs e)
@@ -101,12 +108,15 @@ public partial class mainMenu : Form
         //take picture of the side
         //take four
         //if good, green line, not good then red line
-        /*
-        var sidepictures = takepics.takesidepic();
-        for (int i = 0; i < sidepictures.Count; i++)
+       // VideoCapture capturedimage = new VideoCapture(Settings1.Default.cameraindex);
+
+
+
+        for (int i = 0; i < 4; i++)
         {
-            pblist[i + 4].Image = sidepictures[i].picimg;
-            if (sidepictures[i].isgoodpic)
+            SideMugs[i] = new SideMugshot(capturedimage.QueryFrame().ToBitmap());
+            pblist[i + 4].Image = SideMugs[i].croppedbm;
+            if (SideMugs[i].isEyeOpen)
             {
                 lpblist[i + 4].Text = "Good";
                 lpblist[i + 4].ForeColor = Color.Green;
@@ -118,8 +128,11 @@ public partial class mainMenu : Form
                 lpblist[i + 4].ForeColor = Color.Red;
             }
             lpblist[i + 4].Visible = true;
+            Thread.Sleep(1000);
+
         }
-        */
+       
+        
     }
 
     private void takeFrontPic_Click(object sender, EventArgs e)
@@ -128,13 +141,15 @@ public partial class mainMenu : Form
         //take four
         //if good, green line, not good then red line
 
+       // VideoCapture capturedimage = new VideoCapture(Settings1.Default.cameraindex);
 
-        /*
-        var frontpictures = takepics.takefrontpic();
-        for (int i = 0; i < frontpictures.Count; i++)
+
+
+        for (int i = 0; i < 4; i++)
         {
-            pblist[i].Image = frontpictures[i].picimg;
-            if (frontpictures[i].isgoodpic)
+            FrontMugs[i] = new FrontMugshot(capturedimage.QueryFrame().ToBitmap());
+            pblist[i].Image = FrontMugs[i].croppedbm;
+            if (FrontMugs[i].areEyesOpen)
             {
                 lpblist[i].Text = "Good";
                 lpblist[i].ForeColor = Color.Green;
@@ -146,7 +161,11 @@ public partial class mainMenu : Form
                 lpblist[i].ForeColor = Color.Red;
             }
             lpblist[i].Visible = true;
-        }*/
+            Thread.Sleep(1000);
+        }
+
+       
+        
     }
 
     private void pictureBox1_Click(object sender, EventArgs e)
