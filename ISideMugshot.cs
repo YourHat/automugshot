@@ -16,14 +16,14 @@ namespace automugshot
         public float[] lefteye { get; set; }
         public float[] righteye { get; set; }
 
-        public bool isGoodMugshot { get; }
+        public bool isGoodMugshot { get; set; }
 
         public bool isFacingSide { get; }
 
         public bool isEyeOpen { get; }
         public Bitmap croppedbm { get; }
 
-
+        public bool isFacingLeftSide { get; }
         public Bitmap cropmugshot();
 
 

@@ -33,22 +33,33 @@ namespace automugshot
         public float[] lefteye { get; set; }
         public float[] righteye { get; set; }
 
-        public bool isGoodMugshot { get => isFacingSide && isEyeOpen; }
+        public bool isGoodMugshot { get; set; }
         public bool isFacingSide { get => (Math.Abs(lefteye[0] - righteye[0]) < face[2] / 5); }
         public bool isEyeOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.01, 10, Size.Empty).Length > 0; }
+
+        public bool isFacingLeftSide { get => (righteye[0]- face[0]) < face[2]/2; }
         public Bitmap croppedbm { get => cropmugshot(); }
 
         public SideMugshot(Bitmap orignialbm)
         {
-            originalbm = orignialbm;
-            Mat mugshotface = originalbm.ToMat();
-            var facefeatures = new Mat();
-            using var model = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
-            model.Detect(mugshotface, facefeatures);
-            var facedata = (float[,])facefeatures.GetData(jagged: true);
-            face = new float[] { facedata[0, 0], facedata[0, 1], facedata[0, 2], facedata[0, 3] };
-            lefteye = new float[] { facedata[0, 4], facedata[0, 5] };
-            righteye = new float[] { facedata[0, 6], facedata[0, 7] };
+
+                originalbm = orignialbm;
+                Mat mugshotface = originalbm.ToMat();
+                var facefeatures = new Mat();
+                using var model = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
+                model.Detect(mugshotface, facefeatures);
+                var facedata = (float[,])facefeatures.GetData(jagged: true);
+            if(facedata != null)
+            {
+                face = new float[] { facedata[0, 0], facedata[0, 1], facedata[0, 2], facedata[0, 3] };
+                lefteye = new float[] { facedata[0, 4], facedata[0, 5] };
+                righteye = new float[] { facedata[0, 6], facedata[0, 7] };
+                isGoodMugshot = true;
+            }
+            else { 
+
+                isGoodMugshot = false;
+            }
         }
 
         public Bitmap cropmugshot()
@@ -64,11 +75,24 @@ namespace automugshot
             try
             {
                 newbit = originalbm.Clone(rect, originalbm.PixelFormat);
-                return newbit;
             }
             catch (Exception e)
             {
-                newbit = originalbm;
+                try
+                {
+                    x = facerec.X - (facerec.Width / 3);
+                    xw = (int)(facerec.Width + ((facerec.Width * 5f) / 5f));
+                    xydiff = (((xw * 4) / 3) - facerec.Height);
+                    y = facerec.Y - (xydiff / 3);
+                    yw = facerec.Height + xydiff;
+                    rect = new Rectangle(x, y, xw, yw);
+                    newbit = originalbm.Clone(rect, originalbm.PixelFormat);
+                }
+                catch
+                {
+                    newbit = originalbm;
+                }
+
             }
             return newbit;
         }

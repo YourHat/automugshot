@@ -47,11 +47,11 @@ partial class mainMenu
         label3 = new Label();
         helpMenu = new Button();
         settingsMenu = new Button();
-        lpb1 = new Label();
+        eye1 = new Label();
         sp1 = new Label();
-        lpb2 = new Label();
-        lpb4 = new Label();
-        lpb3 = new Label();
+        eye2 = new Label();
+        eye4 = new Label();
+        eye3 = new Label();
         sp2 = new Label();
         sp3 = new Label();
         sp4 = new Label();
@@ -59,10 +59,26 @@ partial class mainMenu
         sp6 = new Label();
         sp7 = new Label();
         sp8 = new Label();
-        lpb5 = new Label();
-        lpb6 = new Label();
-        lpb7 = new Label();
-        lpb8 = new Label();
+        eye5 = new Label();
+        eye6 = new Label();
+        eye7 = new Label();
+        eye8 = new Label();
+        face1 = new Label();
+        head1 = new Label();
+        head2 = new Label();
+        head3 = new Label();
+        head4 = new Label();
+        face2 = new Label();
+        head5 = new Label();
+        face3 = new Label();
+        face4 = new Label();
+        head6 = new Label();
+        head7 = new Label();
+        head8 = new Label();
+        face5 = new Label();
+        face6 = new Label();
+        face7 = new Label();
+        face8 = new Label();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -76,7 +92,7 @@ partial class mainMenu
         // pictureBox1
         // 
         pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-        pictureBox1.Location = new Point(32, 89);
+        pictureBox1.Location = new Point(32, 106);
         pictureBox1.Name = "pictureBox1";
         pictureBox1.Size = new Size(150, 200);
         pictureBox1.TabIndex = 0;
@@ -86,7 +102,7 @@ partial class mainMenu
         // pictureBox2
         // 
         pictureBox2.BorderStyle = BorderStyle.FixedSingle;
-        pictureBox2.Location = new Point(210, 89);
+        pictureBox2.Location = new Point(210, 106);
         pictureBox2.Name = "pictureBox2";
         pictureBox2.Size = new Size(150, 200);
         pictureBox2.TabIndex = 1;
@@ -96,7 +112,7 @@ partial class mainMenu
         // pictureBox3
         // 
         pictureBox3.BorderStyle = BorderStyle.FixedSingle;
-        pictureBox3.Location = new Point(32, 324);
+        pictureBox3.Location = new Point(32, 358);
         pictureBox3.Name = "pictureBox3";
         pictureBox3.Size = new Size(150, 200);
         pictureBox3.TabIndex = 2;
@@ -106,7 +122,7 @@ partial class mainMenu
         // pictureBox4
         // 
         pictureBox4.BorderStyle = BorderStyle.FixedSingle;
-        pictureBox4.Location = new Point(210, 324);
+        pictureBox4.Location = new Point(210, 358);
         pictureBox4.Name = "pictureBox4";
         pictureBox4.Size = new Size(150, 200);
         pictureBox4.TabIndex = 3;
@@ -116,7 +132,7 @@ partial class mainMenu
         // pictureBox5
         // 
         pictureBox5.BorderStyle = BorderStyle.FixedSingle;
-        pictureBox5.Location = new Point(459, 89);
+        pictureBox5.Location = new Point(400, 106);
         pictureBox5.Name = "pictureBox5";
         pictureBox5.Size = new Size(150, 200);
         pictureBox5.TabIndex = 4;
@@ -126,7 +142,7 @@ partial class mainMenu
         // pictureBox6
         // 
         pictureBox6.BorderStyle = BorderStyle.FixedSingle;
-        pictureBox6.Location = new Point(637, 89);
+        pictureBox6.Location = new Point(578, 106);
         pictureBox6.Name = "pictureBox6";
         pictureBox6.Size = new Size(150, 200);
         pictureBox6.TabIndex = 5;
@@ -136,7 +152,7 @@ partial class mainMenu
         // pictureBox7
         // 
         pictureBox7.BorderStyle = BorderStyle.FixedSingle;
-        pictureBox7.Location = new Point(459, 324);
+        pictureBox7.Location = new Point(400, 358);
         pictureBox7.Name = "pictureBox7";
         pictureBox7.Size = new Size(150, 200);
         pictureBox7.TabIndex = 6;
@@ -146,7 +162,7 @@ partial class mainMenu
         // pictureBox8
         // 
         pictureBox8.BorderStyle = BorderStyle.FixedSingle;
-        pictureBox8.Location = new Point(637, 324);
+        pictureBox8.Location = new Point(578, 358);
         pictureBox8.Name = "pictureBox8";
         pictureBox8.Size = new Size(150, 200);
         pictureBox8.TabIndex = 7;
@@ -156,7 +172,7 @@ partial class mainMenu
         // takeFrontPic
         // 
         takeFrontPic.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        takeFrontPic.Location = new Point(32, 570);
+        takeFrontPic.Location = new Point(32, 625);
         takeFrontPic.Name = "takeFrontPic";
         takeFrontPic.Size = new Size(328, 72);
         takeFrontPic.TabIndex = 8;
@@ -176,7 +192,7 @@ partial class mainMenu
         // takeSidePic
         // 
         takeSidePic.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        takeSidePic.Location = new Point(459, 570);
+        takeSidePic.Location = new Point(400, 625);
         takeSidePic.Name = "takeSidePic";
         takeSidePic.Size = new Size(328, 72);
         takeSidePic.TabIndex = 10;
@@ -187,7 +203,7 @@ partial class mainMenu
         // newPic
         // 
         newPic.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        newPic.Location = new Point(849, 89);
+        newPic.Location = new Point(761, 106);
         newPic.Name = "newPic";
         newPic.Size = new Size(150, 150);
         newPic.TabIndex = 11;
@@ -207,7 +223,7 @@ partial class mainMenu
         // savePics
         // 
         savePics.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        savePics.Location = new Point(849, 268);
+        savePics.Location = new Point(761, 301);
         savePics.Name = "savePics";
         savePics.Size = new Size(150, 150);
         savePics.TabIndex = 13;
@@ -218,38 +234,38 @@ partial class mainMenu
         // label1
         // 
         label1.AutoSize = true;
-        label1.Font = new Font("Stencil", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        label1.Location = new Point(32, 9);
+        label1.Font = new Font("Stencil", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        label1.Location = new Point(12, 9);
         label1.Name = "label1";
-        label1.Size = new Size(257, 38);
+        label1.Size = new Size(294, 44);
         label1.TabIndex = 14;
         label1.Text = "AutoMugshot";
         // 
         // label2
         // 
         label2.AutoSize = true;
-        label2.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label2.Location = new Point(32, 53);
+        label2.Font = new Font("Stencil", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        label2.Location = new Point(32, 66);
         label2.Name = "label2";
         label2.RightToLeft = RightToLeft.No;
-        label2.Size = new Size(128, 19);
+        label2.Size = new Size(167, 25);
         label2.TabIndex = 15;
         label2.Text = "FRONT PROFILE";
         // 
         // label3
         // 
         label3.AutoSize = true;
-        label3.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label3.Location = new Point(459, 53);
+        label3.Font = new Font("Stencil", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        label3.Location = new Point(400, 66);
         label3.Name = "label3";
-        label3.Size = new Size(111, 19);
+        label3.Size = new Size(147, 25);
         label3.TabIndex = 16;
         label3.Text = "SIDE PROFILE";
         // 
         // helpMenu
         // 
         helpMenu.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        helpMenu.Location = new Point(849, 570);
+        helpMenu.Location = new Point(761, 625);
         helpMenu.Name = "helpMenu";
         helpMenu.Size = new Size(150, 72);
         helpMenu.TabIndex = 17;
@@ -260,7 +276,7 @@ partial class mainMenu
         // settingsMenu
         // 
         settingsMenu.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        settingsMenu.Location = new Point(849, 454);
+        settingsMenu.Location = new Point(761, 498);
         settingsMenu.Name = "settingsMenu";
         settingsMenu.Size = new Size(150, 70);
         settingsMenu.TabIndex = 18;
@@ -268,68 +284,68 @@ partial class mainMenu
         settingsMenu.UseVisualStyleBackColor = true;
         settingsMenu.Click += settingsMenu_Click;
         // 
-        // lpb1
+        // eye1
         // 
-        lpb1.AutoSize = true;
-        lpb1.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        lpb1.Location = new Point(32, 292);
-        lpb1.Name = "lpb1";
-        lpb1.Size = new Size(47, 18);
-        lpb1.TabIndex = 19;
-        lpb1.Text = "Good";
-        lpb1.Visible = false;
+        eye1.AutoSize = true;
+        eye1.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        eye1.Location = new Point(32, 309);
+        eye1.Name = "eye1";
+        eye1.Size = new Size(43, 18);
+        eye1.TabIndex = 19;
+        eye1.Text = "Eyes";
+        eye1.Visible = false;
         // 
         // sp1
         // 
         sp1.AutoSize = true;
         sp1.BackColor = Color.Transparent;
         sp1.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        sp1.Location = new Point(90, 98);
+        sp1.Location = new Point(90, 115);
         sp1.Name = "sp1";
         sp1.Size = new Size(83, 19);
         sp1.TabIndex = 20;
         sp1.Text = "Selected";
         sp1.Visible = false;
         // 
-        // lpb2
+        // eye2
         // 
-        lpb2.AutoSize = true;
-        lpb2.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        lpb2.Location = new Point(210, 292);
-        lpb2.Name = "lpb2";
-        lpb2.Size = new Size(47, 18);
-        lpb2.TabIndex = 21;
-        lpb2.Text = "Good";
-        lpb2.Visible = false;
+        eye2.AutoSize = true;
+        eye2.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        eye2.Location = new Point(210, 309);
+        eye2.Name = "eye2";
+        eye2.Size = new Size(43, 18);
+        eye2.TabIndex = 21;
+        eye2.Text = "Eyes";
+        eye2.Visible = false;
         // 
-        // lpb4
+        // eye4
         // 
-        lpb4.AutoSize = true;
-        lpb4.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        lpb4.Location = new Point(210, 527);
-        lpb4.Name = "lpb4";
-        lpb4.Size = new Size(47, 18);
-        lpb4.TabIndex = 22;
-        lpb4.Text = "Good";
-        lpb4.Visible = false;
+        eye4.AutoSize = true;
+        eye4.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        eye4.Location = new Point(210, 561);
+        eye4.Name = "eye4";
+        eye4.Size = new Size(43, 18);
+        eye4.TabIndex = 22;
+        eye4.Text = "Eyes";
+        eye4.Visible = false;
         // 
-        // lpb3
+        // eye3
         // 
-        lpb3.AutoSize = true;
-        lpb3.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        lpb3.Location = new Point(32, 527);
-        lpb3.Name = "lpb3";
-        lpb3.Size = new Size(47, 18);
-        lpb3.TabIndex = 23;
-        lpb3.Text = "Good";
-        lpb3.Visible = false;
+        eye3.AutoSize = true;
+        eye3.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        eye3.Location = new Point(32, 561);
+        eye3.Name = "eye3";
+        eye3.Size = new Size(43, 18);
+        eye3.TabIndex = 23;
+        eye3.Text = "Eyes";
+        eye3.Visible = false;
         // 
         // sp2
         // 
         sp2.AutoSize = true;
         sp2.BackColor = Color.Transparent;
         sp2.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        sp2.Location = new Point(268, 98);
+        sp2.Location = new Point(268, 115);
         sp2.Name = "sp2";
         sp2.Size = new Size(83, 19);
         sp2.TabIndex = 24;
@@ -341,7 +357,7 @@ partial class mainMenu
         sp3.AutoSize = true;
         sp3.BackColor = Color.Transparent;
         sp3.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        sp3.Location = new Point(90, 336);
+        sp3.Location = new Point(90, 365);
         sp3.Name = "sp3";
         sp3.Size = new Size(83, 19);
         sp3.TabIndex = 25;
@@ -353,7 +369,7 @@ partial class mainMenu
         sp4.AutoSize = true;
         sp4.BackColor = Color.Transparent;
         sp4.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        sp4.Location = new Point(268, 336);
+        sp4.Location = new Point(268, 368);
         sp4.Name = "sp4";
         sp4.Size = new Size(83, 19);
         sp4.TabIndex = 26;
@@ -365,7 +381,7 @@ partial class mainMenu
         sp5.AutoSize = true;
         sp5.BackColor = Color.Transparent;
         sp5.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        sp5.Location = new Point(517, 98);
+        sp5.Location = new Point(459, 115);
         sp5.Name = "sp5";
         sp5.Size = new Size(83, 19);
         sp5.TabIndex = 27;
@@ -377,7 +393,7 @@ partial class mainMenu
         sp6.AutoSize = true;
         sp6.BackColor = Color.Transparent;
         sp6.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        sp6.Location = new Point(694, 98);
+        sp6.Location = new Point(636, 115);
         sp6.Name = "sp6";
         sp6.Size = new Size(83, 19);
         sp6.TabIndex = 28;
@@ -389,7 +405,7 @@ partial class mainMenu
         sp7.AutoSize = true;
         sp7.BackColor = Color.Transparent;
         sp7.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        sp7.Location = new Point(517, 336);
+        sp7.Location = new Point(459, 365);
         sp7.Name = "sp7";
         sp7.Size = new Size(83, 19);
         sp7.TabIndex = 29;
@@ -401,66 +417,258 @@ partial class mainMenu
         sp8.AutoSize = true;
         sp8.BackColor = Color.Transparent;
         sp8.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        sp8.Location = new Point(694, 336);
+        sp8.Location = new Point(636, 365);
         sp8.Name = "sp8";
         sp8.Size = new Size(83, 19);
         sp8.TabIndex = 30;
         sp8.Text = "Selected";
         sp8.Visible = false;
         // 
-        // lpb5
+        // eye5
         // 
-        lpb5.AutoSize = true;
-        lpb5.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        lpb5.Location = new Point(459, 292);
-        lpb5.Name = "lpb5";
-        lpb5.Size = new Size(47, 18);
-        lpb5.TabIndex = 31;
-        lpb5.Text = "Good";
-        lpb5.Visible = false;
+        eye5.AutoSize = true;
+        eye5.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        eye5.Location = new Point(400, 309);
+        eye5.Name = "eye5";
+        eye5.Size = new Size(35, 18);
+        eye5.TabIndex = 31;
+        eye5.Text = "Eye";
+        eye5.Visible = false;
         // 
-        // lpb6
+        // eye6
         // 
-        lpb6.AutoSize = true;
-        lpb6.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        lpb6.Location = new Point(637, 292);
-        lpb6.Name = "lpb6";
-        lpb6.Size = new Size(47, 18);
-        lpb6.TabIndex = 32;
-        lpb6.Text = "Good";
-        lpb6.Visible = false;
+        eye6.AutoSize = true;
+        eye6.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        eye6.Location = new Point(578, 309);
+        eye6.Name = "eye6";
+        eye6.Size = new Size(35, 18);
+        eye6.TabIndex = 32;
+        eye6.Text = "Eye";
+        eye6.Visible = false;
         // 
-        // lpb7
+        // eye7
         // 
-        lpb7.AutoSize = true;
-        lpb7.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        lpb7.Location = new Point(459, 527);
-        lpb7.Name = "lpb7";
-        lpb7.Size = new Size(47, 18);
-        lpb7.TabIndex = 33;
-        lpb7.Text = "Good";
-        lpb7.Visible = false;
+        eye7.AutoSize = true;
+        eye7.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        eye7.Location = new Point(400, 561);
+        eye7.Name = "eye7";
+        eye7.Size = new Size(35, 18);
+        eye7.TabIndex = 33;
+        eye7.Text = "Eye";
+        eye7.Visible = false;
         // 
-        // lpb8
+        // eye8
         // 
-        lpb8.AutoSize = true;
-        lpb8.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        lpb8.Location = new Point(638, 527);
-        lpb8.Name = "lpb8";
-        lpb8.Size = new Size(47, 18);
-        lpb8.TabIndex = 34;
-        lpb8.Text = "Good";
-        lpb8.Visible = false;
+        eye8.AutoSize = true;
+        eye8.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        eye8.Location = new Point(578, 561);
+        eye8.Name = "eye8";
+        eye8.Size = new Size(35, 18);
+        eye8.TabIndex = 34;
+        eye8.Text = "Eye";
+        eye8.Visible = false;
+        // 
+        // face1
+        // 
+        face1.AutoSize = true;
+        face1.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        face1.Location = new Point(32, 327);
+        face1.Name = "face1";
+        face1.Size = new Size(110, 18);
+        face1.TabIndex = 35;
+        face1.Text = "Facing Front";
+        face1.Visible = false;
+        // 
+        // head1
+        // 
+        head1.AutoSize = true;
+        head1.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        head1.Location = new Point(90, 309);
+        head1.Name = "head1";
+        head1.Size = new Size(92, 18);
+        head1.TabIndex = 36;
+        head1.Text = "Head Tilte";
+        head1.Visible = false;
+        // 
+        // head2
+        // 
+        head2.AutoSize = true;
+        head2.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        head2.Location = new Point(268, 309);
+        head2.Name = "head2";
+        head2.Size = new Size(92, 18);
+        head2.TabIndex = 37;
+        head2.Text = "Head Tilte";
+        head2.Visible = false;
+        // 
+        // head3
+        // 
+        head3.AutoSize = true;
+        head3.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        head3.Location = new Point(90, 561);
+        head3.Name = "head3";
+        head3.Size = new Size(92, 18);
+        head3.TabIndex = 38;
+        head3.Text = "Head Tilte";
+        head3.Visible = false;
+        // 
+        // head4
+        // 
+        head4.AutoSize = true;
+        head4.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        head4.Location = new Point(268, 561);
+        head4.Name = "head4";
+        head4.Size = new Size(92, 18);
+        head4.TabIndex = 39;
+        head4.Text = "Head Tilte";
+        head4.Visible = false;
+        // 
+        // face2
+        // 
+        face2.AutoSize = true;
+        face2.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        face2.Location = new Point(210, 327);
+        face2.Name = "face2";
+        face2.Size = new Size(110, 18);
+        face2.TabIndex = 44;
+        face2.Text = "Facing Front";
+        face2.Visible = false;
+        // 
+        // head5
+        // 
+        head5.AutoSize = true;
+        head5.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        head5.Location = new Point(454, 309);
+        head5.Name = "head5";
+        head5.Size = new Size(96, 18);
+        head5.TabIndex = 45;
+        head5.Text = "Facing Side";
+        head5.Visible = false;
+        // 
+        // face3
+        // 
+        face3.AutoSize = true;
+        face3.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        face3.Location = new Point(32, 579);
+        face3.Name = "face3";
+        face3.Size = new Size(110, 18);
+        face3.TabIndex = 47;
+        face3.Text = "Facing Front";
+        face3.Visible = false;
+        // 
+        // face4
+        // 
+        face4.AutoSize = true;
+        face4.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        face4.Location = new Point(210, 579);
+        face4.Name = "face4";
+        face4.Size = new Size(110, 18);
+        face4.TabIndex = 48;
+        face4.Text = "Facing Front";
+        face4.Visible = false;
+        // 
+        // head6
+        // 
+        head6.AutoSize = true;
+        head6.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        head6.Location = new Point(632, 309);
+        head6.Name = "head6";
+        head6.Size = new Size(96, 18);
+        head6.TabIndex = 49;
+        head6.Text = "Facing Side";
+        head6.Visible = false;
+        // 
+        // head7
+        // 
+        head7.AutoSize = true;
+        head7.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        head7.Location = new Point(454, 561);
+        head7.Name = "head7";
+        head7.Size = new Size(96, 18);
+        head7.TabIndex = 50;
+        head7.Text = "Facing Side";
+        head7.Visible = false;
+        // 
+        // head8
+        // 
+        head8.AutoSize = true;
+        head8.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        head8.Location = new Point(632, 561);
+        head8.Name = "head8";
+        head8.Size = new Size(96, 18);
+        head8.TabIndex = 51;
+        head8.Text = "Facing Side";
+        head8.Visible = false;
+        // 
+        // face5
+        // 
+        face5.AutoSize = true;
+        face5.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        face5.Location = new Point(400, 327);
+        face5.Name = "face5";
+        face5.Size = new Size(134, 18);
+        face5.TabIndex = 52;
+        face5.Text = "Facing Left Side";
+        face5.Visible = false;
+        // 
+        // face6
+        // 
+        face6.AutoSize = true;
+        face6.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        face6.Location = new Point(578, 327);
+        face6.Name = "face6";
+        face6.Size = new Size(134, 18);
+        face6.TabIndex = 53;
+        face6.Text = "Facing Left Side";
+        face6.Visible = false;
+        // 
+        // face7
+        // 
+        face7.AutoSize = true;
+        face7.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        face7.Location = new Point(400, 579);
+        face7.Name = "face7";
+        face7.Size = new Size(134, 18);
+        face7.TabIndex = 54;
+        face7.Text = "Facing Left Side";
+        face7.Visible = false;
+        // 
+        // face8
+        // 
+        face8.AutoSize = true;
+        face8.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        face8.Location = new Point(578, 579);
+        face8.Name = "face8";
+        face8.Size = new Size(134, 18);
+        face8.TabIndex = 55;
+        face8.Text = "Facing Left Side";
+        face8.Visible = false;
         // 
         // mainMenu
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        ClientSize = new Size(1029, 664);
-        Controls.Add(lpb8);
-        Controls.Add(lpb7);
-        Controls.Add(lpb6);
-        Controls.Add(lpb5);
+        ClientSize = new Size(933, 720);
+        Controls.Add(face8);
+        Controls.Add(face7);
+        Controls.Add(face6);
+        Controls.Add(face5);
+        Controls.Add(head8);
+        Controls.Add(head7);
+        Controls.Add(head6);
+        Controls.Add(face4);
+        Controls.Add(face3);
+        Controls.Add(head5);
+        Controls.Add(face2);
+        Controls.Add(head4);
+        Controls.Add(head3);
+        Controls.Add(head2);
+        Controls.Add(head1);
+        Controls.Add(face1);
+        Controls.Add(eye8);
+        Controls.Add(eye7);
+        Controls.Add(eye6);
+        Controls.Add(eye5);
         Controls.Add(sp8);
         Controls.Add(sp7);
         Controls.Add(sp6);
@@ -468,11 +676,11 @@ partial class mainMenu
         Controls.Add(sp4);
         Controls.Add(sp3);
         Controls.Add(sp2);
-        Controls.Add(lpb3);
-        Controls.Add(lpb4);
-        Controls.Add(lpb2);
+        Controls.Add(eye3);
+        Controls.Add(eye4);
+        Controls.Add(eye2);
         Controls.Add(sp1);
-        Controls.Add(lpb1);
+        Controls.Add(eye1);
         Controls.Add(settingsMenu);
         Controls.Add(helpMenu);
         Controls.Add(label3);
@@ -494,6 +702,7 @@ partial class mainMenu
         Controls.Add(pictureBox1);
         Name = "mainMenu";
         Text = "AutoMugshot";
+        Load += mainMenu_Load;
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -527,11 +736,11 @@ partial class mainMenu
     private Label label3;
     private Button helpMenu;
     private Button settingsMenu;
-    private Label lpb1;
+    private Label eye1;
     private Label sp1;
-    private Label lpb2;
-    private Label lpb4;
-    private Label lpb3;
+    private Label eye2;
+    private Label eye4;
+    private Label eye3;
     private Label sp2;
     private Label sp3;
     private Label sp4;
@@ -539,8 +748,24 @@ partial class mainMenu
     private Label sp6;
     private Label sp7;
     private Label sp8;
-    private Label lpb5;
-    private Label lpb6;
-    private Label lpb7;
-    private Label lpb8;
+    private Label eye5;
+    private Label eye6;
+    private Label eye7;
+    private Label eye8;
+    private Label face1;
+    private Label head1;
+    private Label head2;
+    private Label head3;
+    private Label head4;
+    private Label face2;
+    private Label head5;
+    private Label face3;
+    private Label face4;
+    private Label head6;
+    private Label head7;
+    private Label head8;
+    private Label face5;
+    private Label face6;
+    private Label face7;
+    private Label face8;
 }

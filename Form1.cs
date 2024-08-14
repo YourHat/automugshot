@@ -12,8 +12,12 @@ public partial class mainMenu : Form
     int selectedfront = 9;
     int selectedside = 9;
     List<PictureBox> pblist = new List<PictureBox>();
-    List<Label> lpblist = new List<Label>();
+   // List<Label> lpblist = new List<Label>();
     List<Label> selist = new List<Label>();
+
+    List<Label> test1list = new List<Label>();
+    List<Label> test2list = new List<Label>();
+    List<Label> test3list = new List<Label>();
 
     public VideoCapture capturedimage = new VideoCapture(Settings1.Default.cameraindex);
 
@@ -31,15 +35,32 @@ public partial class mainMenu : Form
         pblist.Add(pictureBox7);
         pblist.Add(pictureBox8);
 
-        lpblist.Add(lpb1);
-        lpblist.Add(lpb2);
-        lpblist.Add(lpb3);
-        lpblist.Add(lpb4);
-        lpblist.Add(lpb5);
-        lpblist.Add(lpb6);
-        lpblist.Add(lpb7);
-        lpblist.Add(lpb8);
+        test1list.Add(eye1);
+        test1list.Add(eye2);
+        test1list.Add(eye3);
+        test1list.Add(eye4);
+        test1list.Add(eye5);
+        test1list.Add(eye6);
+        test1list.Add(eye7);
+        test1list.Add(eye8);
 
+        test2list.Add(head1);
+        test2list.Add(head2);
+        test2list.Add(head3);
+        test2list.Add(head4);
+        test2list.Add(head5);
+        test2list.Add(head6);
+        test2list.Add(head7);
+        test2list.Add(head8);
+
+        test3list.Add(face1);
+        test3list.Add(face2);
+        test3list.Add(face3);
+        test3list.Add(face4);
+        test3list.Add(face5);
+        test3list.Add(face6);
+        test3list.Add(face7);
+        test3list.Add(face8);
 
         selist.Add(sp1);
         selist.Add(sp2);
@@ -49,16 +70,19 @@ public partial class mainMenu : Form
         selist.Add(sp6);
         selist.Add(sp7);
         selist.Add(sp8);
-        
+
+
     }
 
     private void newPic_Click(object sender, EventArgs e)
     {
         // reset pictures
-        for (int i = 0; i < lpblist.Count; i++)
+        for (int i = 0; i < pblist.Count; i++)
         {
             pblist[i].Image = null;
-            lpblist[i].Visible = false;
+            test1list[i].Visible = false;
+            test2list[i].Visible = false;
+            test3list[i].Visible = false;
             selist[i].Visible = false;
         }
     }
@@ -89,8 +113,9 @@ public partial class mainMenu : Form
         //open setting window
         //set path
         //overwrite mugshots or save name as date and time to not overwrite mugshots
-        var settingsform = new saveSettings();
+        var settingsform = new saveSettings(ref capturedimage);
         settingsform.ShowDialog(this);
+       // capturedimage = new VideoCapture(Settings1.Default.cameraindex);
     }
 
     private void helpMenu_Click(object sender, EventArgs e)
@@ -108,31 +133,49 @@ public partial class mainMenu : Form
         //take picture of the side
         //take four
         //if good, green line, not good then red line
-       // VideoCapture capturedimage = new VideoCapture(Settings1.Default.cameraindex);
+        // VideoCapture capturedimage = new VideoCapture(Settings1.Default.cameraindex);
 
 
 
         for (int i = 0; i < 4; i++)
         {
             SideMugs[i] = new SideMugshot(capturedimage.QueryFrame().ToBitmap());
-            pblist[i + 4].Image = SideMugs[i].croppedbm;
-            if (SideMugs[i].isEyeOpen)
+            if (SideMugs[i].isGoodMugshot == false || SideMugs[i] == null)
             {
-                lpblist[i + 4].Text = "Good";
-                lpblist[i + 4].ForeColor = Color.Green;
 
+                pblist[i + 4].Image = Image.FromFile(@".\errorface.jpg");
+                test1list[i + 4].Visible = false;
+                test2list[i + 4].Visible = false;
+                test3list[i + 4].Visible = false;
             }
-            else
-            {
-                lpblist[i + 4].Text = "Bad";
-                lpblist[i + 4].ForeColor = Color.Red;
+            else{
+
+                pblist[i + 4].Image = new Bitmap(SideMugs[i].croppedbm, new Size(150, 200));
+                if (SideMugs[i].isEyeOpen)
+                    test1list[i + 4].ForeColor = Color.Green;
+                else
+                    test1list[i + 4].ForeColor = Color.Yellow;
+
+                if (SideMugs[i].isFacingSide)
+                    test2list[i + 4].ForeColor = Color.Green;
+                else
+                    test2list[i + 4].ForeColor = Color.Red;
+
+                if (SideMugs[i].isFacingLeftSide)
+                    test3list[i + 4].ForeColor = Color.Green;
+                else
+                    test3list[i + 4].ForeColor = Color.Red;
+
+                test1list[i + 4].Visible = true;
+                test2list[i + 4].Visible = true;
+                test3list[i + 4].Visible = true;
             }
-            lpblist[i + 4].Visible = true;
+            pblist[i+4].Update();
             Thread.Sleep(1000);
 
         }
-       
-        
+
+
     }
 
     private void takeFrontPic_Click(object sender, EventArgs e)
@@ -141,31 +184,51 @@ public partial class mainMenu : Form
         //take four
         //if good, green line, not good then red line
 
-       // VideoCapture capturedimage = new VideoCapture(Settings1.Default.cameraindex);
+        // VideoCapture capturedimage = new VideoCapture(Settings1.Default.cameraindex);
 
 
 
         for (int i = 0; i < 4; i++)
         {
             FrontMugs[i] = new FrontMugshot(capturedimage.QueryFrame().ToBitmap());
-            pblist[i].Image = FrontMugs[i].croppedbm;
-            if (FrontMugs[i].areEyesOpen)
+            if (FrontMugs[i].isGoodMugshot == false || FrontMugs[i] == null)
             {
-                lpblist[i].Text = "Good";
-                lpblist[i].ForeColor = Color.Green;
 
+                pblist[i + 4].Image = Image.FromFile(@".\errorface.jpg");
+                test1list[i].Visible = false;
+                test2list[i].Visible = false;
+                test3list[i].Visible = false;
             }
             else
             {
-                lpblist[i].Text = "Bad";
-                lpblist[i].ForeColor = Color.Red;
+                pblist[i].Image = new Bitmap(FrontMugs[i].croppedbm, new Size(150, 200));
+                // pblist[i].Image = FrontMugs[i].croppedbm;
+                if (FrontMugs[i].areEyesOpen)
+                    test1list[i].ForeColor = Color.Green;
+                else
+                    test1list[i].ForeColor = Color.Red;
+
+                if (FrontMugs[i].isHeadTilted)
+                    test2list[i].ForeColor = Color.Green;
+                else
+                    test2list[i].ForeColor = Color.Red;
+
+                if (FrontMugs[i].isFacingfront)
+                    test3list[i].ForeColor = Color.Green;
+                else
+                    test3list[i].ForeColor = Color.Red;
+
+
+                test1list[i].Visible = true;
+                test2list[i].Visible = true;
+                test3list[i].Visible = true;
             }
-            lpblist[i].Visible = true;
+            pblist[i].Update();
             Thread.Sleep(1000);
         }
 
-       
-        
+
+
     }
 
     private void pictureBox1_Click(object sender, EventArgs e)
@@ -230,5 +293,10 @@ public partial class mainMenu : Form
 
     }
 
-
+    private void mainMenu_Load(object sender, EventArgs e)
+    {
+        this.WindowState = FormWindowState.Minimized;
+        this.WindowState = FormWindowState.Normal;
+        this.Focus(); this.Show();
+    }
 }

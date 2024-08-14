@@ -45,24 +45,37 @@ namespace automugshot
         public float[] lefteye { get; set; }
         public float[] righteye { get; set; }
 
-        public bool isGoodMugshot { get => isHeadTilted && isFacingfront && areEyesOpen; }
+        public bool isGoodMugshot { get; set; }
         public bool isHeadTilted { get => ((Math.Acos(Math.Abs(righteye[0] - lefteye[0]) / (Math.Sqrt(Math.Pow(righteye[0] - lefteye[0], 2) + Math.Pow(Math.Abs(righteye[1] - lefteye[1]), 2)))) * (180f / Math.PI)) < 10);}
         public bool isFacingfront { get => (Math.Abs(Math.Abs(face[0] - lefteye[0]) - Math.Abs((face[0] + face[2]) - righteye[0])) < face[2] / 10); }
-        public bool areEyesOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.01, 10, Size.Empty).Length > 1; }
+        public bool areEyesOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.2, 6, Size.Empty).Length > 1; }
         public Bitmap croppedbm { get => cropmugshot();  }
 
         public FrontMugshot(Bitmap orignialbm)
         {
-            originalbm = orignialbm;
-            Mat mugshotface = originalbm.ToMat();
-            var facefeatures = new Mat();
-            using var model = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
-            model.Detect(mugshotface, facefeatures);
-            var facedata = (float[,])facefeatures.GetData(jagged: true);
-            face = new float[] { facedata[0, 0], facedata[0, 1], facedata[0, 2], facedata[0, 3] };
-            lefteye = new float[] { facedata[0, 4], facedata[0, 5] };
-           righteye = new float[] { facedata[0, 6], facedata[0, 7] };
-        }
+
+                originalbm = orignialbm;
+                Mat mugshotface = originalbm.ToMat();
+                var facefeatures = new Mat();
+                using var model = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
+                model.Detect(mugshotface, facefeatures);
+
+                var facedata = (float[,])facefeatures.GetData(jagged: true);
+
+                if (facedata != null)
+                {
+                    face = new float[] { facedata[0, 0], facedata[0, 1], facedata[0, 2], facedata[0, 3] };
+                lefteye = new float[] { facedata[0, 4], facedata[0, 5] };
+                righteye = new float[] { facedata[0, 6], facedata[0, 7] };
+                isGoodMugshot = true;
+                    isGoodMugshot = true;
+                }
+                else
+                {
+
+                    isGoodMugshot = false;
+                }
+            }
 
         public Bitmap cropmugshot()
         {
@@ -84,6 +97,7 @@ namespace automugshot
                 newbit = originalbm;
             }
             return newbit;
+
         }
     }
 }

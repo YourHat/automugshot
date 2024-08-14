@@ -17,7 +17,7 @@ namespace automugshot
         public float[] lefteye { get; set; }
         public float[] righteye { get; set; }
 
-        public bool isGoodMugshot { get;}
+        public bool isGoodMugshot { get; set; }
         
         public bool isHeadTilted { get;  }
         
