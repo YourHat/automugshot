@@ -40,6 +40,8 @@
             label4 = new Label();
             cameralistbox = new ListBox();
             label5 = new Label();
+            label6 = new Label();
+            ControllerBox = new ListBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -134,7 +136,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Stencil", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Green;
-            label4.Location = new Point(573, 144);
+            label4.Location = new Point(662, 50);
             label4.Name = "label4";
             label4.Size = new Size(255, 76);
             label4.TabIndex = 6;
@@ -159,11 +161,32 @@
             label5.TabIndex = 8;
             label5.Text = "Cameras";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(344, 266);
+            label6.Name = "label6";
+            label6.Size = new Size(80, 14);
+            label6.TabIndex = 9;
+            label6.Text = "Controller";
+            // 
+            // ControllerBox
+            // 
+            ControllerBox.FormattingEnabled = true;
+            ControllerBox.ItemHeight = 15;
+            ControllerBox.Location = new Point(344, 283);
+            ControllerBox.Name = "ControllerBox";
+            ControllerBox.Size = new Size(232, 109);
+            ControllerBox.TabIndex = 10;
+            // 
             // saveSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(983, 404);
+            Controls.Add(ControllerBox);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(cameralistbox);
             Controls.Add(label4);
@@ -196,5 +219,7 @@
         private Label label4;
         private ListBox cameralistbox;
         private Label label5;
+        private Label label6;
+        private ListBox ControllerBox;
     }
 }

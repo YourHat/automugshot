@@ -48,13 +48,14 @@ namespace automugshot
         public bool isGoodMugshot { get; set; }
         public bool isHeadTilted { get => ((Math.Acos(Math.Abs(righteye[0] - lefteye[0]) / (Math.Sqrt(Math.Pow(righteye[0] - lefteye[0], 2) + Math.Pow(Math.Abs(righteye[1] - lefteye[1]), 2)))) * (180f / Math.PI)) < 10);}
         public bool isFacingfront { get => (Math.Abs(Math.Abs(face[0] - lefteye[0]) - Math.Abs((face[0] + face[2]) - righteye[0])) < face[2] / 10); }
-        public bool areEyesOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.2, 6, Size.Empty).Length > 1; }
+        public bool areEyesOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.1, 6, Size.Empty).Length > 1; }
         public Bitmap croppedbm { get => cropmugshot();  }
 
-        public FrontMugshot(Bitmap orignialbm)
+        public FrontMugshot(Bitmap orignialbdm)
         {
 
-                originalbm = orignialbm;
+             originalbm = orignialbdm;
+   
                 Mat mugshotface = originalbm.ToMat();
                 var facefeatures = new Mat();
                 using var model = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
@@ -79,6 +80,7 @@ namespace automugshot
 
         public Bitmap cropmugshot()
         {
+            
             Rectangle facerec = new Rectangle((int)face[0], (int)face[1], (int)face[2], (int)face[3]);
             int x = (int)(facerec.X - (facerec.Width / (5f/2f)));
             int xw = (int)(facerec.Width + ((facerec.Width / (5f/2f)) * 2));
@@ -97,6 +99,10 @@ namespace automugshot
                 newbit = originalbm;
             }
             return newbit;
+
+        }
+        public void CalibrationCamera()
+        {
 
         }
     }

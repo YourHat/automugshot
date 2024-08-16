@@ -79,6 +79,9 @@ partial class mainMenu
         face6 = new Label();
         face7 = new Label();
         face8 = new Label();
+        brightnessMenu = new Button();
+        inmateinfotextbox = new TextBox();
+        label4 = new Label();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -223,7 +226,7 @@ partial class mainMenu
         // savePics
         // 
         savePics.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        savePics.Location = new Point(761, 301);
+        savePics.Location = new Point(761, 282);
         savePics.Name = "savePics";
         savePics.Size = new Size(150, 150);
         savePics.TabIndex = 13;
@@ -276,7 +279,7 @@ partial class mainMenu
         // settingsMenu
         // 
         settingsMenu.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        settingsMenu.Location = new Point(761, 498);
+        settingsMenu.Location = new Point(761, 536);
         settingsMenu.Name = "settingsMenu";
         settingsMenu.Size = new Size(150, 70);
         settingsMenu.TabIndex = 18;
@@ -644,11 +647,42 @@ partial class mainMenu
         face8.Text = "Facing Left Side";
         face8.Visible = false;
         // 
+        // brightnessMenu
+        // 
+        brightnessMenu.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        brightnessMenu.Location = new Point(761, 453);
+        brightnessMenu.Name = "brightnessMenu";
+        brightnessMenu.Size = new Size(150, 65);
+        brightnessMenu.TabIndex = 56;
+        brightnessMenu.Text = "Brightness Settings";
+        brightnessMenu.UseVisualStyleBackColor = true;
+        brightnessMenu.Click += brightnessMenu_Click;
+        // 
+        // inmateinfotextbox
+        // 
+        inmateinfotextbox.Location = new Point(665, 66);
+        inmateinfotextbox.Name = "inmateinfotextbox";
+        inmateinfotextbox.Size = new Size(246, 23);
+        inmateinfotextbox.TabIndex = 57;
+        // 
+        // label4
+        // 
+        label4.AutoSize = true;
+        label4.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        label4.Location = new Point(719, 44);
+        label4.Name = "label4";
+        label4.Size = new Size(192, 19);
+        label4.TabIndex = 58;
+        label4.Text = "Inmate's Information";
+        // 
         // mainMenu
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(933, 720);
+        Controls.Add(label4);
+        Controls.Add(inmateinfotextbox);
+        Controls.Add(brightnessMenu);
         Controls.Add(face8);
         Controls.Add(face7);
         Controls.Add(face6);
@@ -768,4 +802,7 @@ partial class mainMenu
     private Label face6;
     private Label face7;
     private Label face8;
+    private Button brightnessMenu;
+    private TextBox inmateinfotextbox;
+    private Label label4;
 }

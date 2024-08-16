@@ -58,5 +58,29 @@ namespace automugshot {
                 this["cameraindex"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM1")]
+        public string controllername {
+            get {
+                return ((string)(this["controllername"]));
+            }
+            set {
+                this["controllername"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public string defaultgain {
+            get {
+                return ((string)(this["defaultgain"]));
+            }
+            set {
+                this["defaultgain"] = value;
+            }
+        }
     }
 }
