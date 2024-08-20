@@ -72,7 +72,7 @@ namespace automugshot
            if(cameralistbox.SelectedIndex > -1) { Settings1.Default.cameraindex = cameralistbox.SelectedIndex; }
 
 
-            string comnumber = @"COM[0-9]";
+            string comnumber = @"COM[0-9]"; //regex
             Regex rg = new Regex(comnumber);
             if (ControllerBox.SelectedIndex > -1)
             {

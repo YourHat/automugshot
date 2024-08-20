@@ -161,9 +161,10 @@ public partial class mainMenu : Form
     }
 
     private void settingsMenu_Click(object sender, EventArgs e)
-    {
+    {// openes settings manu
         
         int tempcam = Settings1.Default.cameraindex;
+        /// show saving icon while saving all the settings
         var settingsform = new saveSettings();
         settingsform.ShowDialog(this);
 
@@ -214,7 +215,8 @@ public partial class mainMenu : Form
         //take picture of the side
         //take four
          if (brightnessMenu.Enabled == true?CalibrationCamera():true)
-        {
+        {// if brightnessmanu was diabled, that means that the controller is not connecter or not working
+            // in that case, we skip the Calibration part.
             for (int i = 0; i < 4; i++)
             {
                 SideMugs[i] = new SideMugshot(capturedimage.QueryFrame().ToBitmap());
@@ -250,7 +252,7 @@ public partial class mainMenu : Form
                     test3list[i + 4].Visible = true;
                 }
                 pblist[i + 4].Update();
-                Thread.Sleep(500);
+                Thread.Sleep(500); // wait 500 millisecond for the next mugshot
 
             }
         }
@@ -380,7 +382,7 @@ public partial class mainMenu : Form
     }
 
     private void brightnessMenu_Click(object sender, EventArgs e)
-    {
+    {// open brightness setting menu
         Bitmap bm = capturedimage.QueryFrame().ToBitmap();
         var brightnesssetting = new BrightnessSettings(capturedimage);
         brightnesssetting.ShowDialog(this);
@@ -388,7 +390,8 @@ public partial class mainMenu : Form
     }
 
     public bool CalibrationCamera()
-    {
+    {// move camera top-bottom, and left-right to make the face in center
+        // then zoom into their face
 
         FaceDetectorYN InitializeFaceDetectionModel(Size inputSize) => new FaceDetectorYN(
             model: "face_detection_yunet_2023mar.onnx",
@@ -412,7 +415,7 @@ public partial class mainMenu : Form
             sp.Open();
             sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9);
             while (!inmiddle)
-            {
+            {// move left and right
                 bm = capturedimage.QueryFrame().ToBitmap();
 
                 mugshotface = bm.ToMat();
@@ -448,7 +451,7 @@ public partial class mainMenu : Form
             bool incenter = false;
             int rp = 0;
             while (!incenter)
-            {
+            {// move top and bottom
                 bm = capturedimage.QueryFrame().ToBitmap();
 
                 mugshotface = bm.ToMat();
@@ -488,7 +491,7 @@ public partial class mainMenu : Form
             bool zoomright = false;
             short zoomvalue = 1000;
             while (!zoomright)
-            {
+            {// zoom in
                 bm = capturedimage.QueryFrame().ToBitmap();
 
                 mugshotface = bm.ToMat();
@@ -526,7 +529,7 @@ public partial class mainMenu : Form
 
     }
     public byte[] getbfromi(short zoomvalue)
-    {
+    {// get called for zooming in function
         byte[] result = new byte[9];
 
         byte[] ba = BitConverter.GetBytes(zoomvalue);
@@ -543,7 +546,7 @@ public partial class mainMenu : Form
         return result;
     }
     public static  class ErrorPrompt
-    {
+    {// error or message prompt
         public static string ShowErrorMessage(string text)
         {
             Form prompt = new Form()

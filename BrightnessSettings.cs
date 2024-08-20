@@ -35,7 +35,7 @@ namespace automugshot
 
             System.Diagnostics.Debug.WriteLine(Settings1.Default.controllername);
             using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
-            {
+            {// zoom out when the menu is loaded
                 sp.Open();
                 sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9);
                 sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x03, 0xFF }, 0, 6);
@@ -49,7 +49,7 @@ namespace automugshot
             this.ControlBox = false;
             onoff = 0;
 
-
+            // show video
             var timer1 = new System.Windows.Forms.Timer();
             timer1.Interval = 50;
             timer1.Tick += timer1_Tick;
@@ -180,7 +180,7 @@ namespace automugshot
     public static class Prompt
     {
         public static string ShowDialog(string text, string caption)
-        {
+        {// for typing admin passwokrd
             Form prompt = new Form()
             {
                 Width = 300,
