@@ -58,7 +58,7 @@
             brighterbutton.Name = "brighterbutton";
             brighterbutton.Size = new Size(175, 161);
             brighterbutton.TabIndex = 4;
-            brighterbutton.Text = "Brighter";
+            brighterbutton.Text = "increase brightness";
             brighterbutton.UseVisualStyleBackColor = true;
             brighterbutton.Click += button1_Click;
             // 
@@ -69,7 +69,7 @@
             darkerbutton.Name = "darkerbutton";
             darkerbutton.Size = new Size(175, 161);
             darkerbutton.TabIndex = 5;
-            darkerbutton.Text = "Darker";
+            darkerbutton.Text = "decrease brightness";
             darkerbutton.UseVisualStyleBackColor = true;
             darkerbutton.Click += button2_Click;
             // 
@@ -117,7 +117,7 @@
             lowerssbutton.Name = "lowerssbutton";
             lowerssbutton.Size = new Size(210, 57);
             lowerssbutton.TabIndex = 9;
-            lowerssbutton.Text = "Lower Shutter Speed";
+            lowerssbutton.Text = "decrease Shutter Speed";
             lowerssbutton.UseVisualStyleBackColor = true;
             lowerssbutton.Click += lowerssbutton_Click;
             // 
@@ -129,7 +129,7 @@
             higherssbutton.Name = "higherssbutton";
             higherssbutton.Size = new Size(210, 57);
             higherssbutton.TabIndex = 10;
-            higherssbutton.Text = "Higher Shutter Speed";
+            higherssbutton.Text = "increase Shutter Speed";
             higherssbutton.UseVisualStyleBackColor = true;
             higherssbutton.Click += higherssbutton_Click;
             // 
@@ -141,7 +141,7 @@
             lowerflbutton.Name = "lowerflbutton";
             lowerflbutton.Size = new Size(210, 57);
             lowerflbutton.TabIndex = 11;
-            lowerflbutton.Text = "Lower Focal Length";
+            lowerflbutton.Text = "decrease Focal Length";
             lowerflbutton.UseVisualStyleBackColor = true;
             lowerflbutton.Click += lowerflbutton_Click;
             // 
@@ -153,7 +153,7 @@
             higherflbutton.Name = "higherflbutton";
             higherflbutton.Size = new Size(210, 57);
             higherflbutton.TabIndex = 12;
-            higherflbutton.Text = "Higher Focal Length";
+            higherflbutton.Text = "increase Focal Length";
             higherflbutton.UseVisualStyleBackColor = true;
             higherflbutton.Click += higherflbutton_Click;
             // 

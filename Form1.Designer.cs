@@ -495,44 +495,44 @@ partial class mainMenu
         // 
         head1.AutoSize = true;
         head1.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        head1.Location = new Point(90, 309);
+        head1.Location = new Point(99, 309);
         head1.Name = "head1";
-        head1.Size = new Size(92, 18);
+        head1.Size = new Size(83, 18);
         head1.TabIndex = 36;
-        head1.Text = "Head Tilte";
+        head1.Text = "Head Tilt";
         head1.Visible = false;
         // 
         // head2
         // 
         head2.AutoSize = true;
         head2.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        head2.Location = new Point(268, 309);
+        head2.Location = new Point(277, 309);
         head2.Name = "head2";
-        head2.Size = new Size(92, 18);
+        head2.Size = new Size(83, 18);
         head2.TabIndex = 37;
-        head2.Text = "Head Tilte";
+        head2.Text = "Head Tilt";
         head2.Visible = false;
         // 
         // head3
         // 
         head3.AutoSize = true;
         head3.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        head3.Location = new Point(90, 561);
+        head3.Location = new Point(99, 561);
         head3.Name = "head3";
-        head3.Size = new Size(92, 18);
+        head3.Size = new Size(83, 18);
         head3.TabIndex = 38;
-        head3.Text = "Head Tilte";
+        head3.Text = "Head Tilt";
         head3.Visible = false;
         // 
         // head4
         // 
         head4.AutoSize = true;
         head4.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        head4.Location = new Point(268, 561);
+        head4.Location = new Point(277, 561);
         head4.Name = "head4";
-        head4.Size = new Size(92, 18);
+        head4.Size = new Size(83, 18);
         head4.TabIndex = 39;
-        head4.Text = "Head Tilte";
+        head4.Text = "Head Tilt";
         head4.Visible = false;
         // 
         // face2

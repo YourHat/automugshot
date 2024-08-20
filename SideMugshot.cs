@@ -35,7 +35,7 @@ namespace automugshot
 
         public bool isGoodMugshot { get; set; }
         public bool isFacingSide { get => (lefteye[0] < face[0] + (face[2] / 2)) && (righteye[0] < face[0] + (face[2] / 2)); }
-        public bool isEyeOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.01, 5, Size.Empty).Length > 0; }
+        public bool isEyeOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.5, 4, Size.Empty).Length > 0; }
 
         public bool isFacingLeftSide { get => (righteye[0]- face[0]) < face[2]/2; }
         public Bitmap croppedbm { get => cropmugshot(); }
@@ -75,6 +75,7 @@ namespace automugshot
             try
             {
                 newbit = originalbm.Clone(rect, originalbm.PixelFormat);
+                return newbit;
             }
             catch (Exception e)
             {
@@ -87,6 +88,7 @@ namespace automugshot
                     yw = facerec.Height + xydiff;
                     rect = new Rectangle(x, y, xw, yw);
                     newbit = originalbm.Clone(rect, originalbm.PixelFormat);
+                    return newbit;
                 }
                 catch
                 {

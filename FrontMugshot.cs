@@ -102,9 +102,6 @@ namespace automugshot
             return newbit;
 
         }
-        public void CalibrationCamera()
-        {
 
-        }
     }
 }

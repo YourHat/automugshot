@@ -73,9 +73,9 @@
             label3.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.Location = new Point(66, 73);
             label3.Name = "label3";
-            label3.Size = new Size(1096, 19);
+            label3.Size = new Size(1098, 19);
             label3.TabIndex = 2;
-            label3.Text = "This software makes it simple to take mugshots by taking the Mugshots automatically and verify and resizing them for you. ";
+            label3.Text = "This software makes it simple to take mugshots by taking the Mugshots automatically, verifying, and resizing them for you. ";
             // 
             // label4
             // 
