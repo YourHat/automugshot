@@ -176,9 +176,9 @@
             label10.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.Location = new Point(485, 648);
             label10.Name = "label10";
-            label10.Size = new Size(439, 28);
+            label10.Size = new Size(439, 42);
             label10.TabIndex = 12;
-            label10.Text = "*** use PTZ camera using VISCA protocol for full functionality\r\n*** make sure to download latest firmware for all the equipments\r\n";
+            label10.Text = "***to select mugshots, click images.\r\n*** use PTZ camera using VISCA protocol for full functionality\r\n*** make sure to download latest firmware for all the equipments\r\n";
             // 
             // HelpMenu
             // 
