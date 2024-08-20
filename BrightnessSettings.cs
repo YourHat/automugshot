@@ -20,9 +20,10 @@ namespace automugshot
 {
     public partial class BrightnessSettings : Form
     {
-     
+
         VideoCapture vcc;
-        public BrightnessSettings(ref VideoCapture vc)
+        int onoff;
+        public BrightnessSettings(VideoCapture vc)
         {
             InitializeComponent();
             vcc = vc;
@@ -31,11 +32,6 @@ namespace automugshot
         private void BrightnessSettings_Load(object sender, EventArgs e)
         {
 
-
-            var timer1 = new System.Windows.Forms.Timer();
-            timer1.Interval = 100;
-            timer1.Tick += timer1_Tick;
-            timer1.Start();
 
             System.Diagnostics.Debug.WriteLine(Settings1.Default.controllername);
             using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
@@ -50,65 +46,32 @@ namespace automugshot
             higherssbutton.Enabled = false;
             lowerssbutton.Enabled = false;
             saveasdefaultbutton.Enabled = false;
+            this.ControlBox = false;
+            onoff = 0;
+
+
+            var timer1 = new System.Windows.Forms.Timer();
+            timer1.Interval = 50;
+            timer1.Tick += timer1_Tick;
+            timer1.Start();
         }
 
         void timer1_Tick(object sender, EventArgs e)
         {
 
+                pictureBox1.Image = new Bitmap(vcc.QueryFrame().ToBitmap(), new Size(960, 540))?? null;
 
-            pictureBox1.Image = new Bitmap(vcc.QueryFrame().ToBitmap(), new Size(960, 540));
         }
 
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // using (var sp = new System.IO.Ports.SerialPort("COM3"))
+         
             using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
             {
                 sp.Open();
-
-                //   sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x01, 0x04, 0x04, 0x01, 0x03, 0xFF }, 0, 9);
-                //move to left
-
-
                 sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x0C, 0x02, 0xFF }, 0, 6);
-
-
-
-
-                //           port.Write(command_buffer[0].raw_serial_data, 0, command_buffer[0].raw_serial_data.Length);
-                /*
-                             if (dispatched_cmd is pan_tilt_inquiry_command)  // Was a pan/tilt inquiry
-        {
-            num_cmds_since_inquiry = 0;
-            last_inquiry_was_pan_tilt = true;
-        }
-                  command_buffer.Add(new zoom_jog_command(camera_num, speed, direction));  // Add it to the end of the buffer
-
-                                    get
-                {
-                    Byte[] serial_data = new Byte[6];
-                    serial_data[0] = VISCA_CODE.HEADER;
-                    serial_data[0] |= (Byte)command_camera_num;
-                    serial_data[1] = VISCA_CODE.COMMAND;
-                    serial_data[2] = VISCA_CODE.CATEGORY_CAMERA1;
-                    serial_data[3] = VISCA_CODE.ZOOM;
-                    if (direction == ZOOM_DIRECTION.IN)
-                        serial_data[4] = (byte)(VISCA_CODE.ZOOM_TELE_SPEED | zoom_speed);
-                    else  // if (direction == ZOOM_DIRECTION.OUT
-                        serial_data[4] = (byte)(VISCA_CODE.ZOOM_WIDE_SPEED | zoom_speed);
-                    serial_data[5] = VISCA_CODE.TERMINATOR;
-
-                    return serial_data;
-                }
-                    port.Write(connect_cmd.raw_serial_data, 0, connect_cmd.raw_serial_data.Length);
-          
-                    port.Write(inquiry.raw_serial_data, 0, inquiry.raw_serial_data.Length);
-                */
-
-                // var readData = sp.ReadLine();
-                // Console.WriteLine(readData);
                 sp.Close();
             }
         }
@@ -127,7 +90,7 @@ namespace automugshot
         private void AdminButton_Click(object sender, EventArgs e)
         {
             string promptValue = Prompt.ShowDialog("Admin Login", "Please type password in and click Okay");
-            if (promptValue == "mugpro2024")
+            if (promptValue == "mugpro24")
             {
                 higherflbutton.Enabled = true;
                 lowerflbutton.Enabled = true;
@@ -177,20 +140,19 @@ namespace automugshot
                 sp.Close();
             }
         }
-        int onoff = 0;
+        
         private void saveasdefaultbutton_Click(object sender, EventArgs e)
         {
 
             using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
             {
                 sp.Open();
+                       sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x06, 0x03, 0xFF }, 0, 6);
                 if (onoff == 0)
                 {
-                     sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x06, 0x02, 0xFF }, 0, 6);
+                   
+                    sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x06, 0x02, 0xFF }, 0, 6);
                     sp.Write(new byte[] { 0x81, 0x01, 0x7E, 0x01, 0x02, 0x00, 0x01, 0xFF }, 0, 8);
-                    //    sp.Write(new byte[] { 0x81, 0x01, 0x7E, 0x04, 0x40, 0x07, 0x00,0x01, 0xFF }, 0, 9);
-                    //  sp.Write(new byte[] { 0x81, 0x01, 0x7E, 0x04, 0x40, 0x07, 0x00,0x00, 0xFF }, 0, 9);
-
                     onoff = 1;
                 }
                 else
@@ -202,10 +164,17 @@ namespace automugshot
             }
 
         }
-       
 
-
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
+            {
+                sp.Open();
+                sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x06, 0x03, 0xFF }, 0, 6);
+                sp.Close();
+            }
+            this.Close();
+        }
     }
 
     public static class Prompt

@@ -34,8 +34,8 @@ namespace automugshot
         public float[] righteye { get; set; }
 
         public bool isGoodMugshot { get; set; }
-        public bool isFacingSide { get => (Math.Abs(lefteye[0] - righteye[0]) < face[2] / 5); }
-        public bool isEyeOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.01, 10, Size.Empty).Length > 0; }
+        public bool isFacingSide { get => (lefteye[0] < face[0] + (face[2] / 2)) && (righteye[0] < face[0] + (face[2] / 2)); }
+        public bool isEyeOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.01, 5, Size.Empty).Length > 0; }
 
         public bool isFacingLeftSide { get => (righteye[0]- face[0]) < face[2]/2; }
         public Bitmap croppedbm { get => cropmugshot(); }
@@ -66,9 +66,9 @@ namespace automugshot
         {
             Rectangle facerec = new Rectangle((int)face[0], (int)face[1], (int)face[2], (int)face[3]);
             int x = facerec.X - (facerec.Width / 3);
-            int xw = (int)(facerec.Width + ((facerec.Width * 9f) / 5f));
+            int xw = (int)(facerec.Width + ((facerec.Width * 11f) / 5f));
             int xydiff = (((xw * 4) / 3) - facerec.Height);
-            int y = facerec.Y - (xydiff / 3);
+            int y = facerec.Y - (xydiff / 2);
             int yw = facerec.Height + xydiff;
             Rectangle rect = new Rectangle(x, y, xw, yw);
             Bitmap newbit;
@@ -91,6 +91,7 @@ namespace automugshot
                 catch
                 {
                     newbit = originalbm;
+                    isGoodMugshot = false;
                 }
 
             }

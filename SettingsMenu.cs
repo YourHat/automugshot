@@ -74,31 +74,25 @@ namespace automugshot
 
             string comnumber = @"COM[0-9]";
             Regex rg = new Regex(comnumber);
-            if (ControllerBox.SelectedIndex != -1)
+            if (ControllerBox.SelectedIndex > -1)
             {
                 MatchCollection mc = rg.Matches(ControllerBox.GetItemText(ControllerBox.SelectedItem));
                 if (mc.Count > 0) { Settings1.Default.controllername = mc[0].Value; }
                 else { Settings1.Default.controllername = "Null"; }
-            }else
-            {
-                Settings1.Default.controllername = "Null";
             }
-                
+            if (openfoldercheckbox.Checked)
+            {
+                Settings1.Default.openfolder = true;
+            }
+            else { Settings1.Default.openfolder = false; }
+
             //Prolific USB-to-Serial Comm Port (COM5)
             Settings1.Default.Save();
             label2.Text = folderPath;
-
-        
             label4.Visible = true;
 
 
         }
 
-        private void saveSettings_Load(object sender, EventArgs e)
-        {
- //           VideoCapture capturedimage = new VideoCapture(1);
-    
-            //cameralistbox.SetSelected(Settings1.Default.cameraindex, true);
-        }
     }
 }

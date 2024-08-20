@@ -28,6 +28,7 @@ partial class mainMenu
     /// </summary>
     private void InitializeComponent()
     {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainMenu));
         pictureBox1 = new PictureBox();
         pictureBox2 = new PictureBox();
         pictureBox3 = new PictureBox();
@@ -81,7 +82,7 @@ partial class mainMenu
         face8 = new Label();
         brightnessMenu = new Button();
         inmateinfotextbox = new TextBox();
-        label4 = new Label();
+        inmateinfortext = new Label();
         ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -94,6 +95,7 @@ partial class mainMenu
         // 
         // pictureBox1
         // 
+        pictureBox1.BackColor = SystemColors.ButtonHighlight;
         pictureBox1.BorderStyle = BorderStyle.FixedSingle;
         pictureBox1.Location = new Point(32, 106);
         pictureBox1.Name = "pictureBox1";
@@ -104,6 +106,7 @@ partial class mainMenu
         // 
         // pictureBox2
         // 
+        pictureBox2.BackColor = SystemColors.ButtonHighlight;
         pictureBox2.BorderStyle = BorderStyle.FixedSingle;
         pictureBox2.Location = new Point(210, 106);
         pictureBox2.Name = "pictureBox2";
@@ -114,6 +117,7 @@ partial class mainMenu
         // 
         // pictureBox3
         // 
+        pictureBox3.BackColor = SystemColors.ButtonHighlight;
         pictureBox3.BorderStyle = BorderStyle.FixedSingle;
         pictureBox3.Location = new Point(32, 358);
         pictureBox3.Name = "pictureBox3";
@@ -124,6 +128,7 @@ partial class mainMenu
         // 
         // pictureBox4
         // 
+        pictureBox4.BackColor = SystemColors.ButtonHighlight;
         pictureBox4.BorderStyle = BorderStyle.FixedSingle;
         pictureBox4.Location = new Point(210, 358);
         pictureBox4.Name = "pictureBox4";
@@ -134,6 +139,7 @@ partial class mainMenu
         // 
         // pictureBox5
         // 
+        pictureBox5.BackColor = SystemColors.ButtonHighlight;
         pictureBox5.BorderStyle = BorderStyle.FixedSingle;
         pictureBox5.Location = new Point(400, 106);
         pictureBox5.Name = "pictureBox5";
@@ -144,6 +150,7 @@ partial class mainMenu
         // 
         // pictureBox6
         // 
+        pictureBox6.BackColor = SystemColors.ButtonHighlight;
         pictureBox6.BorderStyle = BorderStyle.FixedSingle;
         pictureBox6.Location = new Point(578, 106);
         pictureBox6.Name = "pictureBox6";
@@ -154,6 +161,7 @@ partial class mainMenu
         // 
         // pictureBox7
         // 
+        pictureBox7.BackColor = SystemColors.ButtonHighlight;
         pictureBox7.BorderStyle = BorderStyle.FixedSingle;
         pictureBox7.Location = new Point(400, 358);
         pictureBox7.Name = "pictureBox7";
@@ -164,6 +172,7 @@ partial class mainMenu
         // 
         // pictureBox8
         // 
+        pictureBox8.BackColor = SystemColors.ButtonHighlight;
         pictureBox8.BorderStyle = BorderStyle.FixedSingle;
         pictureBox8.Location = new Point(578, 358);
         pictureBox8.Name = "pictureBox8";
@@ -179,7 +188,7 @@ partial class mainMenu
         takeFrontPic.Name = "takeFrontPic";
         takeFrontPic.Size = new Size(328, 72);
         takeFrontPic.TabIndex = 8;
-        takeFrontPic.Text = "Take Pictures";
+        takeFrontPic.Text = "Take Front Pictures";
         takeFrontPic.UseVisualStyleBackColor = true;
         takeFrontPic.Click += takeFrontPic_Click;
         // 
@@ -199,7 +208,7 @@ partial class mainMenu
         takeSidePic.Name = "takeSidePic";
         takeSidePic.Size = new Size(328, 72);
         takeSidePic.TabIndex = 10;
-        takeSidePic.Text = "Take Pictures";
+        takeSidePic.Text = "Take Side Pictures";
         takeSidePic.UseVisualStyleBackColor = true;
         takeSidePic.Click += takeSidePic_Click;
         // 
@@ -230,7 +239,7 @@ partial class mainMenu
         savePics.Name = "savePics";
         savePics.Size = new Size(150, 150);
         savePics.TabIndex = 13;
-        savePics.Text = "Save";
+        savePics.Text = "Save mugshots";
         savePics.UseVisualStyleBackColor = true;
         savePics.Click += savePics_Click;
         // 
@@ -248,7 +257,7 @@ partial class mainMenu
         // 
         label2.AutoSize = true;
         label2.Font = new Font("Stencil", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label2.Location = new Point(32, 66);
+        label2.Location = new Point(32, 78);
         label2.Name = "label2";
         label2.RightToLeft = RightToLeft.No;
         label2.Size = new Size(167, 25);
@@ -259,7 +268,7 @@ partial class mainMenu
         // 
         label3.AutoSize = true;
         label3.Font = new Font("Stencil", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label3.Location = new Point(400, 66);
+        label3.Location = new Point(395, 78);
         label3.Name = "label3";
         label3.Size = new Size(147, 25);
         label3.TabIndex = 16;
@@ -283,7 +292,7 @@ partial class mainMenu
         settingsMenu.Name = "settingsMenu";
         settingsMenu.Size = new Size(150, 70);
         settingsMenu.TabIndex = 18;
-        settingsMenu.Text = "Settings";
+        settingsMenu.Text = "App Settings";
         settingsMenu.UseVisualStyleBackColor = true;
         settingsMenu.Click += settingsMenu_Click;
         // 
@@ -665,22 +674,22 @@ partial class mainMenu
         inmateinfotextbox.Size = new Size(246, 23);
         inmateinfotextbox.TabIndex = 57;
         // 
-        // label4
+        // inmateinfortext
         // 
-        label4.AutoSize = true;
-        label4.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label4.Location = new Point(719, 44);
-        label4.Name = "label4";
-        label4.Size = new Size(192, 19);
-        label4.TabIndex = 58;
-        label4.Text = "Inmate's Information";
+        inmateinfortext.AutoSize = true;
+        inmateinfortext.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        inmateinfortext.Location = new Point(752, 44);
+        inmateinfortext.Name = "inmateinfortext";
+        inmateinfortext.Size = new Size(159, 19);
+        inmateinfortext.TabIndex = 58;
+        inmateinfortext.Text = "Inmate identifier";
         // 
         // mainMenu
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(933, 720);
-        Controls.Add(label4);
+        Controls.Add(inmateinfortext);
         Controls.Add(inmateinfotextbox);
         Controls.Add(brightnessMenu);
         Controls.Add(face8);
@@ -734,8 +743,9 @@ partial class mainMenu
         Controls.Add(pictureBox3);
         Controls.Add(pictureBox2);
         Controls.Add(pictureBox1);
+        Icon = (Icon)resources.GetObject("$this.Icon");
         Name = "mainMenu";
-        Text = "AutoMugshot";
+        Text = "AUTOMUGSHOT";
         Load += mainMenu_Load;
         ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
         ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -804,5 +814,5 @@ partial class mainMenu
     private Label face8;
     private Button brightnessMenu;
     private TextBox inmateinfotextbox;
-    private Label label4;
+    private Label inmateinfortext;
 }

@@ -82,5 +82,17 @@ namespace automugshot {
                 this["defaultgain"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool openfolder {
+            get {
+                return ((bool)(this["openfolder"]));
+            }
+            set {
+                this["openfolder"] = value;
+            }
+        }
     }
 }

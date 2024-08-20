@@ -48,7 +48,7 @@ namespace automugshot
         public bool isGoodMugshot { get; set; }
         public bool isHeadTilted { get => ((Math.Acos(Math.Abs(righteye[0] - lefteye[0]) / (Math.Sqrt(Math.Pow(righteye[0] - lefteye[0], 2) + Math.Pow(Math.Abs(righteye[1] - lefteye[1]), 2)))) * (180f / Math.PI)) < 10);}
         public bool isFacingfront { get => (Math.Abs(Math.Abs(face[0] - lefteye[0]) - Math.Abs((face[0] + face[2]) - righteye[0])) < face[2] / 10); }
-        public bool areEyesOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.1, 6, Size.Empty).Length > 1; }
+        public bool areEyesOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.5, 8, Size.Empty).Length > 1; }
         public Bitmap croppedbm { get => cropmugshot();  }
 
         public FrontMugshot(Bitmap orignialbdm)
@@ -97,6 +97,7 @@ namespace automugshot
             catch (Exception e)
             {
                 newbit = originalbm;
+                isGoodMugshot = false;
             }
             return newbit;
 

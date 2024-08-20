@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrightnessSettings));
             pictureBox1 = new PictureBox();
             brighterbutton = new Button();
             darkerbutton = new Button();
@@ -53,7 +54,7 @@
             // brighterbutton
             // 
             brighterbutton.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            brighterbutton.Location = new Point(978, 168);
+            brighterbutton.Location = new Point(978, 126);
             brighterbutton.Name = "brighterbutton";
             brighterbutton.Size = new Size(175, 161);
             brighterbutton.TabIndex = 4;
@@ -64,7 +65,7 @@
             // darkerbutton
             // 
             darkerbutton.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            darkerbutton.Location = new Point(978, 335);
+            darkerbutton.Location = new Point(978, 293);
             darkerbutton.Name = "darkerbutton";
             darkerbutton.Size = new Size(175, 161);
             darkerbutton.TabIndex = 5;
@@ -75,12 +76,14 @@
             // button3
             // 
             button3.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button3.ForeColor = Color.Red;
             button3.Location = new Point(978, 12);
             button3.Name = "button3";
-            button3.Size = new Size(175, 81);
+            button3.Size = new Size(175, 42);
             button3.TabIndex = 6;
-            button3.Text = "Reset to Default";
+            button3.Text = "Close";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // saveasdefaultbutton
             // 
@@ -90,7 +93,7 @@
             saveasdefaultbutton.Name = "saveasdefaultbutton";
             saveasdefaultbutton.Size = new Size(175, 57);
             saveasdefaultbutton.TabIndex = 7;
-            saveasdefaultbutton.Text = "See Data";
+            saveasdefaultbutton.Text = "See Camera Data";
             saveasdefaultbutton.UseVisualStyleBackColor = true;
             saveasdefaultbutton.Click += saveasdefaultbutton_Click;
             // 
@@ -134,7 +137,7 @@
             // 
             lowerflbutton.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lowerflbutton.ForeColor = SystemColors.ControlText;
-            lowerflbutton.Location = new Point(528, 558);
+            lowerflbutton.Location = new Point(535, 558);
             lowerflbutton.Name = "lowerflbutton";
             lowerflbutton.Size = new Size(210, 57);
             lowerflbutton.TabIndex = 11;
@@ -146,7 +149,7 @@
             // 
             higherflbutton.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             higherflbutton.ForeColor = SystemColors.ControlText;
-            higherflbutton.Location = new Point(744, 558);
+            higherflbutton.Location = new Point(751, 558);
             higherflbutton.Name = "higherflbutton";
             higherflbutton.Size = new Size(210, 57);
             higherflbutton.TabIndex = 12;
@@ -169,8 +172,9 @@
             Controls.Add(darkerbutton);
             Controls.Add(brighterbutton);
             Controls.Add(pictureBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BrightnessSettings";
-            Text = "BrightnessSettings";
+            Text = "AUTOMUGSHOT - BRIGHTNESS SETTINGS";
             Load += BrightnessSettings_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(saveSettings));
             label1 = new Label();
             changePathButton = new Button();
             groupBox1 = new GroupBox();
@@ -42,6 +43,7 @@
             label5 = new Label();
             label6 = new Label();
             ControllerBox = new ListBox();
+            openfoldercheckbox = new CheckBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -112,10 +114,10 @@
             // 
             // saveSettingsButton
             // 
-            saveSettingsButton.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            saveSettingsButton.Location = new Point(830, 338);
+            saveSettingsButton.Font = new Font("Stencil", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            saveSettingsButton.Location = new Point(752, 303);
             saveSettingsButton.Name = "saveSettingsButton";
-            saveSettingsButton.Size = new Size(141, 54);
+            saveSettingsButton.Size = new Size(219, 89);
             saveSettingsButton.TabIndex = 4;
             saveSettingsButton.Text = "Save Settings";
             saveSettingsButton.UseVisualStyleBackColor = true;
@@ -134,11 +136,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Stencil", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Stencil", 72F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Green;
-            label4.Location = new Point(662, 50);
+            label4.Location = new Point(578, 56);
             label4.Name = "label4";
-            label4.Size = new Size(255, 76);
+            label4.Size = new Size(375, 114);
             label4.TabIndex = 6;
             label4.Text = "saved!";
             // 
@@ -180,11 +182,23 @@
             ControllerBox.Size = new Size(232, 109);
             ControllerBox.TabIndex = 10;
             // 
+            // openfoldercheckbox
+            // 
+            openfoldercheckbox.AutoSize = true;
+            openfoldercheckbox.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            openfoldercheckbox.Location = new Point(344, 131);
+            openfoldercheckbox.Name = "openfoldercheckbox";
+            openfoldercheckbox.Size = new Size(180, 18);
+            openfoldercheckbox.TabIndex = 11;
+            openfoldercheckbox.Text = "Open Folder when saved";
+            openfoldercheckbox.UseVisualStyleBackColor = true;
+            // 
             // saveSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(983, 404);
+            Controls.Add(openfoldercheckbox);
             Controls.Add(ControllerBox);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -196,9 +210,9 @@
             Controls.Add(groupBox1);
             Controls.Add(changePathButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "saveSettings";
-            Text = "SettingsMenu";
-            Load += saveSettings_Load;
+            Text = "AUTOMUGSHOT - SETTINGS";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -221,5 +235,6 @@
         private Label label5;
         private Label label6;
         private ListBox ControllerBox;
+        private CheckBox openfoldercheckbox;
     }
 }
