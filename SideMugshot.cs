@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO.Ports;
+using System.ComponentModel.Design;
 
 namespace automugshot
 {
@@ -25,7 +27,7 @@ namespace automugshot
             backendId: Emgu.CV.Dnn.Backend.Default,
             targetId: Target.Cpu
         );
-
+   
         public VideoCapture capturedimage { get; set; }
         public Bitmap originalbm { get; set; }
 
@@ -38,7 +40,7 @@ namespace automugshot
         public bool isEyeOpen { get => cas_eyes_deteection.DetectMultiScale(originalbm.ToImage<Gray, byte>(), 1.5, 4, Size.Empty).Length > 0; }
 
         public bool isFacingLeftSide { get => (righteye[0]- face[0]) < face[2]/2; }
-        public Bitmap croppedbm { get => cropmugshot(); }
+        public Bitmap croppedbm { get; set; }
 
         public SideMugshot(Bitmap orignialbm)
         {
@@ -49,17 +51,20 @@ namespace automugshot
                 using var model = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
                 model.Detect(mugshotface, facefeatures);
                 var facedata = (float[,])facefeatures.GetData(jagged: true);
+                int faceint;
             if(facedata != null)
             {
-                face = new float[] { facedata[0, 0], facedata[0, 1], facedata[0, 2], facedata[0, 3] };
-                lefteye = new float[] { facedata[0, 4], facedata[0, 5] };
-                righteye = new float[] { facedata[0, 6], facedata[0, 7] };
+                faceint = getinmateface(facedata, mugshotface.Width / 2);
+                face = new float[] { facedata[faceint, 0], facedata[faceint, 1], facedata[faceint, 2], facedata[faceint, 3] };
+                lefteye = new float[] { facedata[faceint, 4], facedata[faceint, 5] };
+                righteye = new float[] { facedata[faceint, 6], facedata[faceint, 7] };
                 isGoodMugshot = true;
             }
             else { 
 
                 isGoodMugshot = false;
             }
+            if(isGoodMugshot) { croppedbm = cropmugshot(); }
         }
 
         public Bitmap cropmugshot()
@@ -79,25 +84,42 @@ namespace automugshot
             }
             catch (Exception e)
             {
-                try
+                if (Settings1.Default.controllerwork)
                 {
-                    x = facerec.X - (facerec.Width / 3);
-                    xw = (int)(facerec.Width + ((facerec.Width * 5f) / 5f));
-                    xydiff = (((xw * 4) / 3) - facerec.Height);
-                    y = facerec.Y - (xydiff / 3);
-                    yw = facerec.Height + xydiff;
-                    rect = new Rectangle(x, y, xw, yw);
-                    newbit = originalbm.Clone(rect, originalbm.PixelFormat);
-                    return newbit;
+                    using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
+                    {
+                        sp.Open();
+                        sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x07, 0x35, 0xFF }, 0, 6);
+                        Thread.Sleep(500);
+                        sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x07, 0x00, 0xFF }, 0, 6);
+                        sp.Close();
+                    }
+                    Thread.Sleep(100);
                 }
-                catch
-                {
-                    newbit = originalbm;
-                    isGoodMugshot = false;
-                }
+                newbit = originalbm;
+                isGoodMugshot = false;
+                
 
             }
             return newbit;
+        }
+        public int getinmateface(float[,] facelist, int piccenter)
+        {
+            if (facelist.GetLength(0) == 1) return 0;
+            int closest = 0;
+            float difffromcenter;
+            float diff = piccenter * 2;
+            for (int i = 0; i < facelist.GetLength(0); i++)
+            {
+                difffromcenter = Math.Abs(piccenter - (facelist[i, 0] + (facelist[i, 2] / 2)));
+                if (diff > difffromcenter)
+                {
+                    closest = i;
+                    diff = difffromcenter;
+                }
+            }
+
+            return closest;
         }
     }
 }

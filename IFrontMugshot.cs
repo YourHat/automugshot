@@ -24,7 +24,7 @@ namespace automugshot
         public bool isFacingfront { get; }
         
         public bool areEyesOpen { get; }
-        public Bitmap croppedbm { get;  }
+        public Bitmap croppedbm { get; set; }
 
         public Bitmap cropmugshot();
 

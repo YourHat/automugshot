@@ -94,5 +94,77 @@ namespace automugshot {
                 this["openfolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int cameraspeed {
+            get {
+                return ((int)(this["cameraspeed"]));
+            }
+            set {
+                this["cameraspeed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool controllerwork {
+            get {
+                return ((bool)(this["controllerwork"]));
+            }
+            set {
+                this["controllerwork"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int filename {
+            get {
+                return ((int)(this["filename"]));
+            }
+            set {
+                this["filename"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int combinedmugwidth {
+            get {
+                return ((int)(this["combinedmugwidth"]));
+            }
+            set {
+                this["combinedmugwidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int combinedmugheight {
+            get {
+                return ((int)(this["combinedmugheight"]));
+            }
+            set {
+                this["combinedmugheight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool combinemugshots {
+            get {
+                return ((bool)(this["combinemugshots"]));
+            }
+            set {
+                this["combinemugshots"] = value;
+            }
+        }
     }
 }

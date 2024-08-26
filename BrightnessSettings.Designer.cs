@@ -39,6 +39,8 @@
             higherssbutton = new Button();
             lowerflbutton = new Button();
             higherflbutton = new Button();
+            button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -157,11 +159,33 @@
             higherflbutton.UseVisualStyleBackColor = true;
             higherflbutton.Click += higherflbutton_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(1001, 481);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 13;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(1054, 520);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 14;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
             // BrightnessSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1163, 627);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(higherflbutton);
             Controls.Add(lowerflbutton);
             Controls.Add(higherssbutton);
@@ -193,5 +217,7 @@
         private Button higherssbutton;
         private Button lowerflbutton;
         private Button higherflbutton;
+        private Button button1;
+        private Button button2;
     }
 }

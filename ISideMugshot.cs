@@ -21,7 +21,7 @@ namespace automugshot
         public bool isFacingSide { get; }
 
         public bool isEyeOpen { get; }
-        public Bitmap croppedbm { get; }
+        public Bitmap croppedbm { get; set; }
 
         public bool isFacingLeftSide { get; }
         public Bitmap cropmugshot();

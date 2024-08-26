@@ -18,7 +18,7 @@ namespace automugshot
     public partial class saveSettings : Form
     {
         string folderPath;
-     
+
         public saveSettings()
         {
             InitializeComponent();
@@ -33,6 +33,18 @@ namespace automugshot
             {
                 radioButton2.Checked = true;
             }
+
+            if (Settings1.Default.filename == 0)
+            {
+                inmatedateradiobutton.Checked = true;
+            }
+            else
+            {
+                dateradiobutton.Checked = true;
+            }
+
+            if (Settings1.Default.openfolder == true) { openfoldercheckbox.Checked = true; }
+
             using (var sde = new SystemDeviceEnumerator())
             {
 
@@ -54,6 +66,22 @@ namespace automugshot
                 }
             }
             ControllerBox.Items.Add("No Controller");
+
+            widthbox.Text = Settings1.Default.combinedmugwidth.ToString(); ;
+            heightbox.Text = Settings1.Default.combinedmugheight.ToString();
+
+            if (Settings1.Default.combinemugshots == true)
+            {
+                widthbox.Enabled = true;
+                heightbox.Enabled = true;
+                combinepiccheckbox.Checked = true;
+            }
+            else
+            {
+                widthbox.Enabled = false;
+                heightbox.Enabled = false;
+                combinepiccheckbox.Checked = false;
+            }
         }
 
         private void changePathButton_Click(object sender, EventArgs e)
@@ -69,7 +97,19 @@ namespace automugshot
             //change the override setting for pictures
             Settings1.Default.filepathforpic = folderPath;
             if (radioButton1.Checked == true) { Settings1.Default.overridepic = true; } else { Settings1.Default.overridepic = false; };
-           if(cameralistbox.SelectedIndex > -1) { Settings1.Default.cameraindex = cameralistbox.SelectedIndex; }
+            if (inmatedateradiobutton.Checked == true) { Settings1.Default.filename = 0; } else { Settings1.Default.filename = 1; }
+            if (cameralistbox.SelectedIndex > -1) { Settings1.Default.cameraindex = cameralistbox.SelectedIndex; }
+
+            if (combinepiccheckbox.Checked == true)
+            {
+                Settings1.Default.combinedmugwidth = int.Parse(widthbox.Text);
+                Settings1.Default.combinedmugheight = int.Parse(heightbox.Text);
+                Settings1.Default.combinemugshots = true;
+            }
+            else
+            {
+                Settings1.Default.combinemugshots = false;
+            }
 
 
             string comnumber = @"COM[0-9]"; //regex
@@ -94,5 +134,23 @@ namespace automugshot
 
         }
 
+        private void combinepiccheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (combinepiccheckbox.Checked == true)
+            {
+                widthbox.Enabled = true;
+                heightbox.Enabled = true;
+            }
+            else
+            {
+                widthbox.Enabled = false;
+                heightbox.Enabled = false;
+            }
+        }
+
+        private void combinekeypress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); ;
+        }
     }
 }
