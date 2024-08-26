@@ -23,6 +23,7 @@ public partial class mainMenu : Form
     List<PictureBox> pblist = new List<PictureBox>(); //list of picture box for mugshots
     List<Label> selist = new List<Label>(); // list of lables for "selected"
 
+
     List<Label> test1list = new List<Label>(); // list of labels for eyes
     List<Label> test2list = new List<Label>(); // list of labels for head tiltle / facing side
     List<Label> test3list = new List<Label>(); // list of labels for facing front and left side
@@ -123,6 +124,52 @@ public partial class mainMenu : Form
         camerastatlabel.ForeColor = Color.Green;
         camerastatlabel.Text = "Ready!";
         controllerbuttonchange(Settings1.Default.controllerwork);
+
+
+        newPic.FlatAppearance.BorderColor = Color.Green;
+        newPic.FlatAppearance.BorderSize = 8;
+        savePics.FlatAppearance.BorderColor = Color.Gray;
+        savePics.FlatAppearance.BorderSize = 1;
+        CalibrateButton.FlatAppearance.BorderColor = Color.Gray;
+        CalibrateButton.FlatAppearance.BorderSize = 1;
+        takeFrontPic.FlatAppearance.BorderColor = Color.Gray;
+        takeFrontPic.FlatAppearance.BorderSize = 1;
+        takeSidePic.FlatAppearance.BorderColor = Color.Gray;
+        takeSidePic.FlatAppearance.BorderSize = 1;
+        settingsMenu.FlatAppearance.BorderColor = Color.Gray;
+        settingsMenu.FlatAppearance.BorderSize = 1;
+        helpMenu.FlatAppearance.BorderColor = Color.Gray;
+        helpMenu.FlatAppearance.BorderSize = 1;
+        DecBrightnessButton.FlatAppearance.BorderColor = Color.Gray;
+        DecBrightnessButton.FlatAppearance.BorderSize = 1;
+        IncBrightnessButton.FlatAppearance.BorderColor = Color.Gray;
+        IncBrightnessButton.FlatAppearance.BorderSize = 1;
+        MoveDownButton.FlatAppearance.BorderColor = Color.Gray;
+        MoveDownButton.FlatAppearance.BorderSize = 1;
+        MoveUpButton.FlatAppearance.BorderColor = Color.Gray;
+        MoveUpButton.FlatAppearance.BorderSize = 1;
+        MoveLeftButton.FlatAppearance.BorderColor = Color.Gray;
+        MoveLeftButton.FlatAppearance.BorderSize = 1;
+        MoveRightButton.FlatAppearance.BorderColor = Color.Gray;
+        MoveRightButton.FlatAppearance.BorderSize = 1;
+
+        ZoominButton.FlatAppearance.BorderColor = Color.Gray;
+        ZoominButton.FlatAppearance.BorderSize = 1;
+        ZoomOutButton.FlatAppearance.BorderColor = Color.Gray;
+        ZoomOutButton.FlatAppearance.BorderSize = 1;
+        StopMoveButton.FlatAppearance.BorderColor = Color.Gray;
+        StopMoveButton.FlatAppearance.BorderSize = 1;
+        StopZoomButton.FlatAppearance.BorderColor = Color.Gray;
+        StopZoomButton.FlatAppearance.BorderSize = 1;
+        SlowButton.FlatAppearance.BorderColor = Color.Gray;
+        SlowButton.FlatAppearance.BorderSize = 1;
+        FastButton.FlatAppearance.BorderColor = Color.Gray;
+        FastButton.FlatAppearance.BorderSize = 1;
+        MediumButton.FlatAppearance.BorderColor = Color.Gray;
+        MediumButton.FlatAppearance.BorderSize = 1;
+        resetcamerabutton.FlatAppearance.BorderColor = Color.Gray;
+        resetcamerabutton.FlatAppearance.BorderSize = 1;
+
     }
 
 
@@ -168,14 +215,43 @@ public partial class mainMenu : Form
                 sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x04, 0xFF }, 0, 5);
                 Thread.Sleep(500);
                 sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9);
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 sp.Close();
             }
+            camerastatlabel.ForeColor = Color.Green;
+            camerastatlabel.Text = "Ready!";
+            buttoncolortogray();
+            CalibrateButton.FlatAppearance.BorderColor = Color.Green;
+            CalibrateButton.FlatAppearance.BorderSize = 8;
+        }
+        else
+        {
+            camerastatlabel.ForeColor = Color.Green;
+            camerastatlabel.Text = "Ready!";
+            buttoncolortogray();
+            takeFrontPic.FlatAppearance.BorderColor = Color.Green;
+            takeFrontPic.FlatAppearance.BorderSize = 8;
         }
 
-        camerastatlabel.ForeColor = Color.Green;
-        camerastatlabel.Text = "Ready!";
-     
+
+    }
+
+    private void buttoncolortogray()
+    {
+        newPic.FlatAppearance.BorderColor = Color.Gray;
+        newPic.FlatAppearance.BorderSize = 1;
+        savePics.FlatAppearance.BorderColor = Color.Gray;
+        savePics.FlatAppearance.BorderSize = 1;
+        CalibrateButton.FlatAppearance.BorderColor = Color.Gray;
+        CalibrateButton.FlatAppearance.BorderSize = 1;
+        takeFrontPic.FlatAppearance.BorderColor = Color.Gray;
+        takeFrontPic.FlatAppearance.BorderSize = 1;
+        takeSidePic.FlatAppearance.BorderColor = Color.Gray;
+        takeSidePic.FlatAppearance.BorderSize = 1;
+        DecBrightnessButton.FlatAppearance.BorderColor = Color.Gray;
+        DecBrightnessButton.FlatAppearance.BorderSize = 1;
+        IncBrightnessButton.FlatAppearance.BorderColor = Color.Gray;
+        IncBrightnessButton.FlatAppearance.BorderSize = 1;
     }
 
     private Bitmap combinemugshots (Bitmap front, Bitmap side)
@@ -283,6 +359,9 @@ public partial class mainMenu : Form
                     }
 
                 }
+                buttoncolortogray();
+                newPic.FlatAppearance.BorderColor = Color.Green;
+                newPic.FlatAppearance.BorderSize = 8;
             }
             else
             {
@@ -360,7 +439,7 @@ public partial class mainMenu : Form
         //  if (brightnessMenu.Enabled == true ? CalibrationCamera() : true)
         // {// if brightnessmanu was diabled, that means that the controller is not connecter or not working
         // in that case, we skip the Calibration part.
-
+        bool istheregoodpicture = false;
         camerastatlabel.ForeColor = Color.Red;
         camerastatlabel.Text = "Taking mugshots...";
         camerastatlabel.Update();
@@ -398,6 +477,7 @@ public partial class mainMenu : Form
                 test1list[i + 4].Visible = true;
                 test2list[i + 4].Visible = true;
                 test3list[i + 4].Visible = true;
+                istheregoodpicture = true;
             }
             pblist[i + 4].Update();
             Thread.Sleep(200); // wait 500 millisecond for the next mugshot
@@ -405,15 +485,22 @@ public partial class mainMenu : Form
         }
         //   }
         //  else { string promptValue = ErrorPrompt.ShowErrorMessage("Face not detected or subject moving around too much"); }
-        camerastatlabel.ForeColor = Color.Green;
-        camerastatlabel.Text = "Ready!";
 
+        if (istheregoodpicture)
+        {
+            camerastatlabel.ForeColor = Color.Green;
+            camerastatlabel.Text = "Ready!";
+            buttoncolortogray();
+            savePics.FlatAppearance.BorderColor = Color.Green;
+            savePics.FlatAppearance.BorderSize = 8;
+        }
     }
 
     private void takeFrontPic_Click(object sender, EventArgs e)
     {
         //take picture of the front
         //take four
+        bool istheregoodpicture = false;
 
         // if (brightnessMenu.Enabled == true ? CalibrationCamera() : true)
         camerastatlabel.ForeColor = Color.Red;
@@ -453,14 +540,22 @@ public partial class mainMenu : Form
                 test1list[i].Visible = true;
                 test2list[i].Visible = true;
                 test3list[i].Visible = true;
+                istheregoodpicture = true;
             }
             pblist[i].Update();
             Thread.Sleep(200);
         }
 
         // else { string promptValue = ErrorPrompt.ShowErrorMessage("Face not detected or subject moving around too much. please try again."); }
-        camerastatlabel.ForeColor = Color.Green;
-        camerastatlabel.Text = "Ready!";
+        if (istheregoodpicture)
+        {
+            camerastatlabel.ForeColor = Color.Green;
+            camerastatlabel.Text = "Ready!";
+            buttoncolortogray();
+            takeSidePic.FlatAppearance.BorderColor = Color.Green;
+            takeSidePic.FlatAppearance.BorderSize = 8;
+        }
+
 
     }
 
@@ -535,6 +630,7 @@ public partial class mainMenu : Form
         timer1.Interval = 50;
         timer1.Tick += timer1_Tick;
         timer1.Start();
+        newPic.Focus();
     }
 
     /* private void brightnessMenu_Click(object sender, EventArgs e)
@@ -700,11 +796,12 @@ public partial class mainMenu : Form
             {
                 //return false;
             }
-            Thread.Sleep(100);
+            Thread.Sleep(500);
             livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
             livepicbox.Update();
 
             int zv = 1;
+            bool isfirst = true;
             bool zoomright = false;
             short zoomvalue = 2000;
             while (!zoomright)
@@ -724,11 +821,14 @@ public partial class mainMenu : Form
                     if ((mugshotface.Height) > face[3] * 4)
                     {
                         sp.Write(getbfromi((short)(zoomvalue * zv)), 0, 9);
+                        isfirst = false;
                     }
                     else
                     {
+                        
                         zoomright = true;
-                        sp.Write(getbfromi((short)((float)zoomvalue * 0.9f * (zv-2))), 0, 9);
+                        if(!isfirst)
+                            sp.Write(getbfromi((short)((float)zoomvalue * 0.9f * (zv-2))), 0, 9);
                     }
                 }
                 else
@@ -737,12 +837,12 @@ public partial class mainMenu : Form
                 }
                 zv++;
                 zoomvalue = (short)((float)zoomvalue / 0.99f);
-                Thread.Sleep(100);
+                Thread.Sleep(200);
                 livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
                 livepicbox.Update();
                 if (zv > 9) zoomright = true;
             }
-
+            
             sp.Close();
         }
     }
@@ -796,6 +896,12 @@ public partial class mainMenu : Form
         CalibrateCamera();
         camerastatlabel.ForeColor = Color.Green;
         camerastatlabel.Text = "Ready!";
+        buttoncolortogray();
+        DecBrightnessButton.FlatAppearance.BorderColor = Color.Green;
+        DecBrightnessButton.FlatAppearance.BorderSize = 8;
+        IncBrightnessButton.FlatAppearance.BorderColor = Color.Green;
+        IncBrightnessButton.FlatAppearance.BorderSize = 8;
+
     }
 
     private void resetcamerabutton_Click(object sender, EventArgs e)
@@ -827,6 +933,13 @@ public partial class mainMenu : Form
             sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x0D, 0x02, 0xFF }, 0, 6);
             sp.Close();
         }
+        if (!(DecBrightnessButton.FlatAppearance.BorderColor == Color.Gray))
+        {
+            buttoncolortogray();
+            takeFrontPic.FlatAppearance.BorderColor = Color.Green;
+            takeFrontPic.FlatAppearance.BorderSize = 8;
+        }
+
     }
 
     private void DecBrightnessButton_Click(object sender, EventArgs e)
@@ -836,6 +949,12 @@ public partial class mainMenu : Form
             sp.Open();
             sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x0D, 0x03, 0xFF }, 0, 6);
             sp.Close();
+        }
+        if (!(DecBrightnessButton.FlatAppearance.BorderColor == Color.Gray))
+        {
+            buttoncolortogray();
+            takeFrontPic.FlatAppearance.BorderColor = Color.Green;
+            takeFrontPic.FlatAppearance.BorderSize = 8;
         }
     }
 

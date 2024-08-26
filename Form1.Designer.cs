@@ -204,13 +204,15 @@ partial class mainMenu
         // 
         // takeFrontPic
         // 
+        takeFrontPic.BackColor = SystemColors.ControlLight;
+        takeFrontPic.FlatStyle = FlatStyle.Flat;
         takeFrontPic.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         takeFrontPic.Location = new Point(367, 693);
         takeFrontPic.Name = "takeFrontPic";
         takeFrontPic.Size = new Size(150, 126);
         takeFrontPic.TabIndex = 8;
         takeFrontPic.Text = "Take Front Pictures";
-        takeFrontPic.UseVisualStyleBackColor = true;
+        takeFrontPic.UseVisualStyleBackColor = false;
         takeFrontPic.Click += takeFrontPic_Click;
         // 
         // button2
@@ -224,24 +226,28 @@ partial class mainMenu
         // 
         // takeSidePic
         // 
+        takeSidePic.BackColor = SystemColors.ControlLight;
+        takeSidePic.FlatStyle = FlatStyle.Flat;
         takeSidePic.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         takeSidePic.Location = new Point(545, 693);
         takeSidePic.Name = "takeSidePic";
         takeSidePic.Size = new Size(150, 126);
         takeSidePic.TabIndex = 10;
         takeSidePic.Text = "Take Side Pictures";
-        takeSidePic.UseVisualStyleBackColor = true;
+        takeSidePic.UseVisualStyleBackColor = false;
         takeSidePic.Click += takeSidePic_Click;
         // 
         // newPic
         // 
+        newPic.BackColor = SystemColors.ControlLight;
+        newPic.FlatStyle = FlatStyle.Flat;
         newPic.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         newPic.Location = new Point(15, 691);
         newPic.Name = "newPic";
         newPic.Size = new Size(150, 126);
         newPic.TabIndex = 11;
         newPic.Text = "Start New Mugshot Process";
-        newPic.UseVisualStyleBackColor = true;
+        newPic.UseVisualStyleBackColor = false;
         newPic.Click += newPic_Click;
         // 
         // button5
@@ -255,13 +261,15 @@ partial class mainMenu
         // 
         // savePics
         // 
+        savePics.BackColor = SystemColors.ControlLight;
+        savePics.FlatStyle = FlatStyle.Flat;
         savePics.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         savePics.Location = new Point(715, 691);
         savePics.Name = "savePics";
         savePics.Size = new Size(150, 126);
         savePics.TabIndex = 13;
         savePics.Text = "Save mugshots";
-        savePics.UseVisualStyleBackColor = true;
+        savePics.UseVisualStyleBackColor = false;
         savePics.Click += savePics_Click;
         // 
         // label1
@@ -297,24 +305,28 @@ partial class mainMenu
         // 
         // helpMenu
         // 
+        helpMenu.BackColor = SystemColors.ControlLight;
+        helpMenu.FlatStyle = FlatStyle.Flat;
         helpMenu.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         helpMenu.Location = new Point(880, 757);
         helpMenu.Name = "helpMenu";
         helpMenu.Size = new Size(259, 60);
         helpMenu.TabIndex = 17;
         helpMenu.Text = "Help";
-        helpMenu.UseVisualStyleBackColor = true;
+        helpMenu.UseVisualStyleBackColor = false;
         helpMenu.Click += helpMenu_Click;
         // 
         // settingsMenu
         // 
+        settingsMenu.BackColor = SystemColors.ControlLight;
+        settingsMenu.FlatStyle = FlatStyle.Flat;
         settingsMenu.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         settingsMenu.Location = new Point(880, 691);
         settingsMenu.Name = "settingsMenu";
         settingsMenu.Size = new Size(259, 60);
         settingsMenu.TabIndex = 18;
         settingsMenu.Text = "Application Settings";
-        settingsMenu.UseVisualStyleBackColor = true;
+        settingsMenu.UseVisualStyleBackColor = false;
         settingsMenu.Click += settingsMenu_Click;
         // 
         // eye1
@@ -706,35 +718,41 @@ partial class mainMenu
         // 
         // IncBrightnessButton
         // 
+        IncBrightnessButton.BackColor = SystemColors.ControlLight;
+        IncBrightnessButton.FlatStyle = FlatStyle.Flat;
         IncBrightnessButton.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         IncBrightnessButton.Location = new Point(220, 295);
         IncBrightnessButton.Name = "IncBrightnessButton";
-        IncBrightnessButton.Size = new Size(197, 72);
+        IncBrightnessButton.Size = new Size(197, 84);
         IncBrightnessButton.TabIndex = 62;
         IncBrightnessButton.Text = "Increase Brightness";
-        IncBrightnessButton.UseVisualStyleBackColor = true;
+        IncBrightnessButton.UseVisualStyleBackColor = false;
         IncBrightnessButton.Click += IncBrightnessButton_Click;
         // 
         // DecBrightnessButton
         // 
+        DecBrightnessButton.BackColor = SystemColors.ControlLight;
+        DecBrightnessButton.FlatStyle = FlatStyle.Flat;
         DecBrightnessButton.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         DecBrightnessButton.Location = new Point(5, 295);
         DecBrightnessButton.Name = "DecBrightnessButton";
-        DecBrightnessButton.Size = new Size(199, 72);
+        DecBrightnessButton.Size = new Size(199, 84);
         DecBrightnessButton.TabIndex = 63;
         DecBrightnessButton.Text = "Decrease Brightness";
-        DecBrightnessButton.UseVisualStyleBackColor = true;
+        DecBrightnessButton.UseVisualStyleBackColor = false;
         DecBrightnessButton.Click += DecBrightnessButton_Click;
         // 
         // CalibrateButton
         // 
+        CalibrateButton.BackColor = SystemColors.ControlLight;
+        CalibrateButton.FlatStyle = FlatStyle.Flat;
         CalibrateButton.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         CalibrateButton.Location = new Point(193, 693);
         CalibrateButton.Name = "CalibrateButton";
         CalibrateButton.Size = new Size(150, 126);
         CalibrateButton.TabIndex = 64;
         CalibrateButton.Text = "Calibrate Camera";
-        CalibrateButton.UseVisualStyleBackColor = true;
+        CalibrateButton.UseVisualStyleBackColor = false;
         CalibrateButton.Click += CalibrateButton_Click;
         // 
         // camerastatlabel
@@ -749,64 +767,74 @@ partial class mainMenu
         // 
         // MoveUpButton
         // 
+        MoveUpButton.BackColor = SystemColors.ControlLight;
+        MoveUpButton.FlatStyle = FlatStyle.Flat;
         MoveUpButton.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         MoveUpButton.Location = new Point(48, 385);
         MoveUpButton.Name = "MoveUpButton";
         MoveUpButton.Size = new Size(124, 50);
         MoveUpButton.TabIndex = 67;
         MoveUpButton.Text = "Up";
-        MoveUpButton.UseVisualStyleBackColor = true;
+        MoveUpButton.UseVisualStyleBackColor = false;
         MoveUpButton.Click += MoveUpButton_Click;
         // 
         // MoveLeftButton
         // 
+        MoveLeftButton.BackColor = SystemColors.ControlLight;
+        MoveLeftButton.FlatStyle = FlatStyle.Flat;
         MoveLeftButton.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         MoveLeftButton.Location = new Point(5, 441);
         MoveLeftButton.Name = "MoveLeftButton";
         MoveLeftButton.Size = new Size(66, 73);
         MoveLeftButton.TabIndex = 68;
         MoveLeftButton.Text = "Left";
-        MoveLeftButton.UseVisualStyleBackColor = true;
+        MoveLeftButton.UseVisualStyleBackColor = false;
         MoveLeftButton.Click += MoveLeftButton_Click;
         // 
         // MoveDownButton
         // 
+        MoveDownButton.BackColor = SystemColors.ControlLight;
+        MoveDownButton.FlatStyle = FlatStyle.Flat;
         MoveDownButton.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         MoveDownButton.Location = new Point(48, 520);
         MoveDownButton.Name = "MoveDownButton";
         MoveDownButton.Size = new Size(124, 50);
         MoveDownButton.TabIndex = 69;
         MoveDownButton.Text = "Down";
-        MoveDownButton.UseVisualStyleBackColor = true;
+        MoveDownButton.UseVisualStyleBackColor = false;
         MoveDownButton.Click += MoveDownButton_Click;
         // 
         // MoveRightButton
         // 
+        MoveRightButton.BackColor = SystemColors.ControlLight;
+        MoveRightButton.FlatStyle = FlatStyle.Flat;
         MoveRightButton.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
         MoveRightButton.Location = new Point(151, 441);
         MoveRightButton.Name = "MoveRightButton";
         MoveRightButton.Size = new Size(66, 73);
         MoveRightButton.TabIndex = 70;
         MoveRightButton.Text = "Right";
-        MoveRightButton.UseVisualStyleBackColor = true;
+        MoveRightButton.UseVisualStyleBackColor = false;
         MoveRightButton.Click += MoveRightButton_Click;
         // 
         // MediumButton
         // 
-        MediumButton.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        MediumButton.Location = new Point(288, 514);
+        MediumButton.BackColor = SystemColors.ControlLight;
+        MediumButton.FlatStyle = FlatStyle.Flat;
+        MediumButton.Font = new Font("Stencil", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        MediumButton.Location = new Point(288, 505);
         MediumButton.Name = "MediumButton";
-        MediumButton.Size = new Size(61, 48);
+        MediumButton.Size = new Size(61, 65);
         MediumButton.TabIndex = 79;
         MediumButton.Text = "Medium";
-        MediumButton.UseVisualStyleBackColor = true;
+        MediumButton.UseVisualStyleBackColor = false;
         MediumButton.Click += MediumButton_Click;
         // 
         // label4
         // 
         label4.AutoSize = true;
         label4.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        label4.Location = new Point(220, 495);
+        label4.Location = new Point(220, 486);
         label4.Name = "label4";
         label4.Size = new Size(172, 16);
         label4.TabIndex = 78;
@@ -814,79 +842,93 @@ partial class mainMenu
         // 
         // FastButton
         // 
+        FastButton.BackColor = SystemColors.ControlLight;
+        FastButton.FlatStyle = FlatStyle.Flat;
         FastButton.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        FastButton.Location = new Point(355, 514);
+        FastButton.Location = new Point(355, 505);
         FastButton.Name = "FastButton";
-        FastButton.Size = new Size(62, 48);
+        FastButton.Size = new Size(62, 65);
         FastButton.TabIndex = 77;
         FastButton.Text = "Fast";
-        FastButton.UseVisualStyleBackColor = true;
+        FastButton.UseVisualStyleBackColor = false;
         FastButton.Click += FastButton_Click;
         // 
         // SlowButton
         // 
+        SlowButton.BackColor = SystemColors.ControlLight;
+        SlowButton.FlatStyle = FlatStyle.Flat;
         SlowButton.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        SlowButton.Location = new Point(220, 514);
+        SlowButton.Location = new Point(220, 505);
         SlowButton.Name = "SlowButton";
-        SlowButton.Size = new Size(62, 48);
+        SlowButton.Size = new Size(62, 65);
         SlowButton.TabIndex = 76;
         SlowButton.Text = "Slow";
-        SlowButton.UseVisualStyleBackColor = true;
+        SlowButton.UseVisualStyleBackColor = false;
         SlowButton.Click += SlowButton_Click;
         // 
         // StopZoomButton
         // 
+        StopZoomButton.BackColor = SystemColors.ControlLight;
+        StopZoomButton.FlatStyle = FlatStyle.Flat;
         StopZoomButton.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         StopZoomButton.Location = new Point(288, 385);
         StopZoomButton.Name = "StopZoomButton";
         StopZoomButton.Size = new Size(61, 81);
         StopZoomButton.TabIndex = 75;
         StopZoomButton.Text = "Stop";
-        StopZoomButton.UseVisualStyleBackColor = true;
+        StopZoomButton.UseVisualStyleBackColor = false;
         StopZoomButton.Click += StopZoomButton_Click;
         // 
         // StopMoveButton
         // 
+        StopMoveButton.BackColor = SystemColors.ControlLight;
+        StopMoveButton.FlatStyle = FlatStyle.Flat;
         StopMoveButton.Font = new Font("Stencil", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         StopMoveButton.Location = new Point(77, 441);
         StopMoveButton.Name = "StopMoveButton";
         StopMoveButton.Size = new Size(68, 73);
         StopMoveButton.TabIndex = 74;
         StopMoveButton.Text = "Stop";
-        StopMoveButton.UseVisualStyleBackColor = true;
+        StopMoveButton.UseVisualStyleBackColor = false;
         StopMoveButton.Click += StopMoveButton_Click;
         // 
         // resetcamerabutton
         // 
+        resetcamerabutton.BackColor = SystemColors.ControlLight;
+        resetcamerabutton.FlatStyle = FlatStyle.Flat;
         resetcamerabutton.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
         resetcamerabutton.Location = new Point(303, 3);
         resetcamerabutton.Name = "resetcamerabutton";
         resetcamerabutton.Size = new Size(114, 29);
         resetcamerabutton.TabIndex = 73;
         resetcamerabutton.Text = "reset Camera";
-        resetcamerabutton.UseVisualStyleBackColor = true;
+        resetcamerabutton.UseVisualStyleBackColor = false;
         resetcamerabutton.Click += resetcamerabutton_Click;
         // 
         // ZoomOutButton
         // 
+        ZoomOutButton.BackColor = SystemColors.ControlLight;
+        ZoomOutButton.FlatStyle = FlatStyle.Flat;
         ZoomOutButton.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
         ZoomOutButton.Location = new Point(355, 385);
         ZoomOutButton.Name = "ZoomOutButton";
         ZoomOutButton.Size = new Size(62, 81);
         ZoomOutButton.TabIndex = 72;
         ZoomOutButton.Text = "Zoom out";
-        ZoomOutButton.UseVisualStyleBackColor = true;
+        ZoomOutButton.UseVisualStyleBackColor = false;
         ZoomOutButton.Click += ZoomOutButton_Click;
         // 
         // ZoominButton
         // 
+        ZoominButton.BackColor = SystemColors.ControlLight;
+        ZoominButton.FlatStyle = FlatStyle.Flat;
         ZoominButton.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
         ZoominButton.Location = new Point(220, 385);
         ZoominButton.Name = "ZoominButton";
         ZoominButton.Size = new Size(62, 82);
         ZoominButton.TabIndex = 71;
         ZoominButton.Text = "Zoom in";
-        ZoominButton.UseVisualStyleBackColor = true;
+        ZoominButton.UseVisualStyleBackColor = false;
         ZoominButton.Click += ZoominButton_Click;
         // 
         // panel1
