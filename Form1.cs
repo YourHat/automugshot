@@ -312,7 +312,7 @@ public partial class mainMenu : Form
                     SideMugs[selectedside - 4].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\Side_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     if(Settings1.Default.combinemugshots == true)
                     {
-                        combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic + "\\Combined_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic + "\\xCombined_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     }
 
 
@@ -335,7 +335,7 @@ public partial class mainMenu : Form
                             SideMugs[selectedside - 4].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_") + inmateinfo + "_Side_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                             if (Settings1.Default.combinemugshots == true)
                             {
-                                combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_") + inmateinfo + "_Combined_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_") + inmateinfo + "_xCombined_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                             }
 
                             if (Settings1.Default.openfolder == true)
@@ -349,7 +349,7 @@ public partial class mainMenu : Form
                         SideMugs[selectedside - 4].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm") + "_Side_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                         if (Settings1.Default.combinemugshots == true)
                         {
-                            combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic  +"\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm") + "_Combined_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                            combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic  +"\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm") + "_xCombined_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                         }
 
                         if (Settings1.Default.openfolder == true)
@@ -581,12 +581,16 @@ public partial class mainMenu : Form
 
     private void changeselectedfront(int index)
     {
-        if (selectedfront != 9)
+        if (FrontMugs[index] is not null && test1list[index].Visible == true)
         {
-            selist[selectedfront].Visible = false;
+            if (selectedfront != 9)
+            {
+                selist[selectedfront].Visible = false;
+            }
+            selectedfront = index;
+            selist[selectedfront].Visible = true;
         }
-        selectedfront = index;
-        selist[selectedfront].Visible = true;
+
 
     }
 
@@ -612,12 +616,16 @@ public partial class mainMenu : Form
 
     private void changeselectedside(int index)
     {
-        if (selectedside != 9)
+        if (SideMugs[index-4] is not null )
         {
-            selist[selectedside].Visible = false;
+            if (selectedside != 9)
+            {
+                selist[selectedside].Visible = false;
+            }
+            selectedside = index;
+            selist[selectedside].Visible = true;
         }
-        selectedside = index;
-        selist[selectedside].Visible = true;
+
 
     }
 

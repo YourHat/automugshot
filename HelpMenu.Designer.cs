@@ -121,18 +121,18 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(420, 141);
+            label8.Location = new Point(443, 161);
             label8.Name = "label8";
-            label8.Size = new Size(783, 475);
+            label8.Size = new Size(783, 399);
             label8.TabIndex = 7;
             label8.Text = resources.GetString("label8.Text");
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(40, 141);
+            pictureBox1.Location = new Point(40, 140);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(285, 225);
+            pictureBox1.Size = new Size(385, 289);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
@@ -140,9 +140,9 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(40, 575);
+            pictureBox3.Location = new Point(40, 445);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(295, 130);
+            pictureBox3.Size = new Size(373, 248);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 10;
             pictureBox3.TabStop = false;
@@ -162,11 +162,11 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(485, 648);
+            label10.Location = new Point(466, 611);
             label10.Name = "label10";
             label10.Size = new Size(439, 42);
             label10.TabIndex = 12;
-            label10.Text = "***to select mugshots, click images.\r\n*** use PTZ camera using VISCA protocol for full functionality\r\n*** make sure to download latest firmware for all the equipments\r\n";
+            label10.Text = "*** to select mugshots, click images.\r\n*** use PTZ camera using VISCA protocol for full functionality\r\n*** make sure to download latest firmware for all the equipments\r\n";
             // 
             // HelpMenu
             // 
