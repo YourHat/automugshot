@@ -95,6 +95,9 @@ public partial class mainMenu : Form
             using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
             {
                 sp.Open();
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x00, 0xFF }, 0, 6);
+                Thread.Sleep(200);
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x0D, 0xFF }, 0, 6);
                 sp.Close();
             }
             //    brightnessMenu.Enabled = true;
@@ -413,6 +416,9 @@ public partial class mainMenu : Form
             {
                 sp.Open();
                 sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9);
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x00, 0xFF }, 0, 6);
+                Thread.Sleep(200);
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x0D, 0xFF }, 0, 6);
                 sp.Close();
             }
             //  brightnessMenu.Enabled = true;
