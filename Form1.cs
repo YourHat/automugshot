@@ -213,7 +213,7 @@ public partial class mainMenu : Form
             {
                 sp.Open();
                 sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x04, 0xFF }, 0, 5);
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                 sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9);
                 Thread.Sleep(2000);
                 sp.Close();
