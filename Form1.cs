@@ -337,11 +337,11 @@ public partial class mainMenu : Form
                         }
                         else
                         {
-                            FrontMugs[selectedfront].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_") + inmateinfo + "_Front_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                            SideMugs[selectedside - 4].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_") + inmateinfo + "_Side_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                            FrontMugs[selectedfront].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MMdd_HHmm_") + inmateinfo + "_Front.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                            SideMugs[selectedside - 4].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MMdd_HHmm_") + inmateinfo + "_Side.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                             if (Settings1.Default.combinemugshots == true)
                             {
-                                combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm_") + inmateinfo + "_xCombined_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                                combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MMdd_HHmm_") + inmateinfo + "_xCombined.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                             }
 
                             if (Settings1.Default.openfolder == true)
@@ -351,11 +351,11 @@ public partial class mainMenu : Form
                     }
                     else
                     {
-                        FrontMugs[selectedfront].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm") + "_Front_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                        SideMugs[selectedside - 4].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm") + "_Side_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        FrontMugs[selectedfront].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MMdd_HHmm") + "_Front.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                        SideMugs[selectedside - 4].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MMdd_HHmm") + "_Side.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                         if (Settings1.Default.combinemugshots == true)
                         {
-                            combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic  +"\\" + DateTime.Now.ToString("yyyy_MM_dd_HH_mm") + "_xCombined_Mugshot.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                            combinemugshots(FrontMugs[selectedfront].croppedbm, SideMugs[selectedside - 4].croppedbm).Save(@"" + Settings1.Default.filepathforpic  +"\\" + DateTime.Now.ToString("yyyy_MMdd_HHmm") + "_xCombined.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                         }
 
                         if (Settings1.Default.openfolder == true)
