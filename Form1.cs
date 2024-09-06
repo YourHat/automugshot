@@ -84,9 +84,14 @@ public partial class mainMenu : Form
         selist.Add(sp8);
 
         capturedimage = new VideoCapture(Settings1.Default.cameraindex); // initiate videocapture
-
-        try // check and see if controller for camera is connected and selected
+        if (!capturedimage.IsOpened)
         {
+            Settings1.Default.cameraindex = 0;
+            Settings1.Default.Save();
+            capturedimage = new VideoCapture(Settings1.Default.cameraindex);
+        }
+            try // check and see if controller for camera is connected and selected
+            {
             using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
             {
                 sp.Open();
@@ -170,15 +175,16 @@ public partial class mainMenu : Form
         resetcamerabutton.FlatAppearance.BorderColor = Color.Gray;
         resetcamerabutton.FlatAppearance.BorderSize = 1;
 
+
+  
+
     }
 
 
 
     void timer1_Tick(object sender, EventArgs e)
     {
-
-        livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
-
+            livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
     }
 
 
@@ -485,11 +491,10 @@ public partial class mainMenu : Form
         }
         //   }
         //  else { string promptValue = ErrorPrompt.ShowErrorMessage("Face not detected or subject moving around too much"); }
-
+        camerastatlabel.ForeColor = Color.Green;
+        camerastatlabel.Text = "Ready!";
         if (istheregoodpicture)
         {
-            camerastatlabel.ForeColor = Color.Green;
-            camerastatlabel.Text = "Ready!";
             buttoncolortogray();
             savePics.FlatAppearance.BorderColor = Color.Green;
             savePics.FlatAppearance.BorderSize = 8;
@@ -546,11 +551,11 @@ public partial class mainMenu : Form
             Thread.Sleep(200);
         }
 
+        camerastatlabel.ForeColor = Color.Green;
+        camerastatlabel.Text = "Ready!";
         // else { string promptValue = ErrorPrompt.ShowErrorMessage("Face not detected or subject moving around too much. please try again."); }
         if (istheregoodpicture)
         {
-            camerastatlabel.ForeColor = Color.Green;
-            camerastatlabel.Text = "Ready!";
             buttoncolortogray();
             takeSidePic.FlatAppearance.BorderColor = Color.Green;
             takeSidePic.FlatAppearance.BorderSize = 8;
