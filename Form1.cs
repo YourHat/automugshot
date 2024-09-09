@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO.Ports;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -183,11 +184,55 @@ public partial class mainMenu : Form
 
     }
 
+    int GCtime = 0;
+    Size targetSize = new Size(386, 216);
+    void timer1_Tick(object sender, EventArgs e) {
+
+        //  var framebit = capturedimage.QueryFrame().ToBitmap();
+        // var newbitm = new Bitmap(framebit, new Size(386, 216));
+
+        // Dispose of the previous bitmap if it exists
+        //  if (previousBitmap != null)
+        //  {
+        //      previousBitmap.Dispose();
+        // }
+
+        // Assign the new bitmap to the PictureBox
+        // livepicbox.Image = newbitm;
+
+        // Update the previous bitmap reference
+        //previousBitmap = newbitm;
+
+        // Optionally, if you are using the frame bitmap for drawing, you might need to dispose of it too
+        // framebit.Dispose();
+
+        Image<Bgr, byte> image = null;
+        using (Mat frame = capturedimage.QueryFrame())
+        {
+            if (frame != null)
+            {
+                // Resize the frame to the desired size
+                Mat resizedFrame = new Mat();
+                CvInvoke.Resize(frame, resizedFrame, targetSize);
+                image?.Dispose();
+                // Convert the resized frame to a Bitmap
+                image = resizedFrame.ToImage<Bgr, byte>();
+
+                if (livepicbox.Image != null) { livepicbox.Image.Dispose(); }
 
 
-    void timer1_Tick(object sender, EventArgs e)
-    {
-            livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
+                // Display the image in the PictureBox
+                livepicbox.Image?.Dispose(); // Dispose of the previous image if it exists
+                livepicbox.Image = image.ToBitmap();
+            }
+            GCtime++;
+            if (GCtime > 600)
+            {
+                GC.Collect();
+                GCtime = 0;
+            }
+        }
+
     }
 
 
@@ -201,6 +246,7 @@ public partial class mainMenu : Form
         // reset pictures and inmate identifier text box
         for (int i = 0; i < pblist.Count; i++)
         {
+           
             pblist[i].Image = null;
             test1list[i].Visible = false;
             test2list[i].Visible = false;
@@ -211,9 +257,15 @@ public partial class mainMenu : Form
         }
         for (int i = 0;i<4;i++)
         {
+            FrontMugs[i]?.originalbm?.Dispose();
+            FrontMugs[i]?.croppedbm?.Dispose();
+            SideMugs[i]?.originalbm?.Dispose();
+            SideMugs[i]?.croppedbm?.Dispose();
             FrontMugs[i] = null;
             SideMugs[i] = null;
         }
+
+        GC.Collect();
 
         inmateinfotextbox.Text = String.Empty;
         if (Settings1.Default.controllerwork)
@@ -640,14 +692,15 @@ public partial class mainMenu : Form
 
     }
 
+    System.Windows.Forms.Timer timer1;
     private void mainMenu_Load(object sender, EventArgs e)
     {
         this.WindowState = FormWindowState.Minimized;
         this.WindowState = FormWindowState.Normal;
         this.Focus(); this.Show();
-        var timer1 = new System.Windows.Forms.Timer();
+        timer1 = new System.Windows.Forms.Timer();
         timer1.Interval = 50;
-        timer1.Tick += timer1_Tick;
+       timer1.Tick += timer1_Tick;
         timer1.Start();
         newPic.Focus();
     }
