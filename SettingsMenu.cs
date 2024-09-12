@@ -45,6 +45,7 @@ namespace automugshot
 
             if (Settings1.Default.openfolder == true) { openfoldercheckbox.Checked = true; }
 
+            // get camera connected with USB cables
             using (var sde = new SystemDeviceEnumerator())
             {
 
@@ -55,6 +56,8 @@ namespace automugshot
                 }
 
             }
+
+            // get serial controllers
             ManagementClass processClass = new ManagementClass("Win32_PnPEntity");
             ManagementObjectCollection Ports = processClass.GetInstances();
             foreach (ManagementObject property in Ports)
@@ -148,6 +151,7 @@ namespace automugshot
             }
         }
 
+        // only let numbers to be typed in
         private void combinekeypress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); ;

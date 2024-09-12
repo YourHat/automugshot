@@ -97,7 +97,7 @@ namespace automugshot
                 return newbit;
             }
             catch (Exception e)
-            {
+            {// zoom out if its bad
                 if (Settings1.Default.controllerwork) { 
                     using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
                     {
@@ -117,6 +117,7 @@ namespace automugshot
             return newbit;
 
         }
+        // get inmate face (face in the middle)
         public int getinmateface(float[,] facelist, int piccenter)
         {
             if (facelist.GetLength(0) == 1) return 0;

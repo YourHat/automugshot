@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="filepathforpic" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\yxtana\Desktop</Value>
+      <Value Profile="(Default)">C:\Users</Value>
     </Setting>
     <Setting Name="overridepic" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

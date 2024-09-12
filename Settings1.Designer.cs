@@ -25,7 +25,7 @@ namespace automugshot {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\yxtana\\Desktop")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users")]
         public string filepathforpic {
             get {
                 return ((string)(this["filepathforpic"]));

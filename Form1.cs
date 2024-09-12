@@ -96,16 +96,16 @@ public partial class mainMenu : Form
             using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
             {
                 sp.Open();
-                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x00, 0xFF }, 0, 6);
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x00, 0xFF }, 0, 6); // change to CAM_AE Full Auto
                 Thread.Sleep(200);
-                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x0D, 0xFF }, 0, 6);
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x0D, 0xFF }, 0, 6); // change to CAM_AE Bright
                 sp.Close();
             }
-            //    brightnessMenu.Enabled = true;
+            
         }
         catch (Exception ex)
         {
-            //  brightnessMenu.Enabled = false;
+          
         }
 
         if (Settings1.Default.overridepic == false && Settings1.Default.filename == 0) // check and see if override setting is true or false
@@ -118,7 +118,7 @@ public partial class mainMenu : Form
             inmateinfotextbox.Enabled = false;
             inmateinfortext.Enabled = false;
         }
-        switch (Settings1.Default.cameraspeed)
+        switch (Settings1.Default.cameraspeed) // movement speed of the PTZ camera
         {
             case 0:
                 SlowButton.ForeColor = Color.Red;
@@ -134,7 +134,7 @@ public partial class mainMenu : Form
         camerastatlabel.Text = "Ready!";
         controllerbuttonchange(Settings1.Default.controllerwork);
 
-
+        // UI of the buttons
         newPic.FlatAppearance.BorderColor = Color.Green;
         newPic.FlatAppearance.BorderSize = 8;
         savePics.FlatAppearance.BorderColor = Color.Gray;
@@ -184,27 +184,11 @@ public partial class mainMenu : Form
 
     }
 
+    // Garbage Collector is not disposing Bitmap correctory..... idk why
+    // forcing GC to dispose to save memory
     int GCtime = 0;
     Size targetSize = new Size(386, 216);
     void timer1_Tick(object sender, EventArgs e) {
-
-        //  var framebit = capturedimage.QueryFrame().ToBitmap();
-        // var newbitm = new Bitmap(framebit, new Size(386, 216));
-
-        // Dispose of the previous bitmap if it exists
-        //  if (previousBitmap != null)
-        //  {
-        //      previousBitmap.Dispose();
-        // }
-
-        // Assign the new bitmap to the PictureBox
-        // livepicbox.Image = newbitm;
-
-        // Update the previous bitmap reference
-        //previousBitmap = newbitm;
-
-        // Optionally, if you are using the frame bitmap for drawing, you might need to dispose of it too
-        // framebit.Dispose();
 
         Image<Bgr, byte> image = null;
         using (Mat frame = capturedimage.QueryFrame())
@@ -228,14 +212,14 @@ public partial class mainMenu : Form
             GCtime++;
             if (GCtime > 600)
             {
-                GC.Collect();
+                GC.Collect(); // dont really want to do this. but i had too......
                 GCtime = 0;
             }
         }
 
     }
 
-
+    // start new mugshot process button
     private void newPic_Click(object sender, EventArgs e)
     {
 
@@ -265,7 +249,7 @@ public partial class mainMenu : Form
             SideMugs[i] = null;
         }
 
-        GC.Collect();
+        GC.Collect(); // dont really want to do this. but i had too.....
 
         inmateinfotextbox.Text = String.Empty;
         if (Settings1.Default.controllerwork)
@@ -273,15 +257,15 @@ public partial class mainMenu : Form
             using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
             {
                 sp.Open();
-                sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x04, 0xFF }, 0, 5);
+                sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x04, 0xFF }, 0, 5);// reset the camera to the original position
                 Thread.Sleep(1000);
-                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9);
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9); // zoom out
                 Thread.Sleep(2000);
                 sp.Close();
             }
             camerastatlabel.ForeColor = Color.Green;
             camerastatlabel.Text = "Ready!";
-            buttoncolortogray();
+            buttoncolortogray(); 
             CalibrateButton.FlatAppearance.BorderColor = Color.Green;
             CalibrateButton.FlatAppearance.BorderSize = 8;
         }
@@ -297,6 +281,7 @@ public partial class mainMenu : Form
 
     }
 
+    // reset all the button's UI
     private void buttoncolortogray()
     {
         newPic.FlatAppearance.BorderColor = Color.Gray;
@@ -315,6 +300,7 @@ public partial class mainMenu : Form
         IncBrightnessButton.FlatAppearance.BorderSize = 1;
     }
 
+    // combining mugshots -> ran if it is checked in the settings menu
     private Bitmap combinemugshots (Bitmap front, Bitmap side)
     {
 
@@ -360,6 +346,7 @@ public partial class mainMenu : Form
 
         return result;
     }
+    //save mugshots button
     private void savePics_Click(object sender, EventArgs e)
     {
 
@@ -438,6 +425,7 @@ public partial class mainMenu : Form
 
     }
 
+    // settings button
     private void settingsMenu_Click(object sender, EventArgs e)
     {// openes settings manu
 
@@ -463,14 +451,14 @@ public partial class mainMenu : Form
         }
 
         try
-        {
+        {// if controller does not work,gray out the buttons for camera controll
             using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
             {
                 sp.Open();
-                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9);
-                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x00, 0xFF }, 0, 6);
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9); // zoom out
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x00, 0xFF }, 0, 6); // change CAM_AE to Full Auto
                 Thread.Sleep(200);
-                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x0D, 0xFF }, 0, 6);
+                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x39, 0x0D, 0xFF }, 0, 6); // change CAM_AE to Bright
                 sp.Close();
             }
             //  brightnessMenu.Enabled = true;
@@ -489,6 +477,7 @@ public partial class mainMenu : Form
 
     }
 
+    // help button
     private void helpMenu_Click(object sender, EventArgs e)
     {
         //open help window
@@ -496,13 +485,12 @@ public partial class mainMenu : Form
         helpform.ShowDialog(this);
     }
 
+    // take side pictues button
     private void takeSidePic_Click(object sender, EventArgs e)
     {
         //take picture of the side
         //take four
-        //  if (brightnessMenu.Enabled == true ? CalibrationCamera() : true)
-        // {// if brightnessmanu was diabled, that means that the controller is not connecter or not working
-        // in that case, we skip the Calibration part.
+
         bool istheregoodpicture = false;
         camerastatlabel.ForeColor = Color.Red;
         camerastatlabel.Text = "Taking mugshots...";
@@ -510,8 +498,8 @@ public partial class mainMenu : Form
 
         for (int i = 0; i < 4; i++)
         {
-            SideMugs[i] = new SideMugshot(capturedimage.QueryFrame().ToBitmap());
-            if (SideMugs[i].isGoodMugshot == false || SideMugs[i] == null)
+            SideMugs[i] = new SideMugshot(capturedimage.QueryFrame().ToBitmap()); //create sidemugshot class object
+            if (SideMugs[i].isGoodMugshot == false || SideMugs[i] == null) // error handling
             {
 
                 pblist[i + 4].Image = System.Drawing.Image.FromFile(@".\errorface.jpg");
@@ -559,20 +547,20 @@ public partial class mainMenu : Form
         }
     }
 
+    //take front pictures button
     private void takeFrontPic_Click(object sender, EventArgs e)
     {
         //take picture of the front
         //take four
         bool istheregoodpicture = false;
 
-        // if (brightnessMenu.Enabled == true ? CalibrationCamera() : true)
         camerastatlabel.ForeColor = Color.Red;
         camerastatlabel.Text = "Taking mugshots...";
         camerastatlabel.Update();
         for (int i = 0; i < 4; i++)
         {
-            FrontMugs[i] = new FrontMugshot(capturedimage.QueryFrame().ToBitmap());
-            if (FrontMugs[i].isGoodMugshot == false || FrontMugs[i] == null)
+            FrontMugs[i] = new FrontMugshot(capturedimage.QueryFrame().ToBitmap()); // create new front mugshot class object
+            if (FrontMugs[i].isGoodMugshot == false || FrontMugs[i] == null) // error handling
             {
 
                 pblist[i].Image = System.Drawing.Image.FromFile(@".\errorface.jpg");
@@ -611,7 +599,6 @@ public partial class mainMenu : Form
 
         camerastatlabel.ForeColor = Color.Green;
         camerastatlabel.Text = "Ready!";
-        // else { string promptValue = ErrorPrompt.ShowErrorMessage("Face not detected or subject moving around too much. please try again."); }
         if (istheregoodpicture)
         {
             buttoncolortogray();
@@ -622,6 +609,7 @@ public partial class mainMenu : Form
 
     }
 
+    // selecting mugshots from here
     private void pictureBox1_Click(object sender, EventArgs e)
     {
         changeselectedfront(0);
@@ -692,12 +680,17 @@ public partial class mainMenu : Form
 
     }
 
+    // selecting mugshot until here
+
+
+    // main menu loading method
     System.Windows.Forms.Timer timer1;
     private void mainMenu_Load(object sender, EventArgs e)
     {
         this.WindowState = FormWindowState.Minimized;
         this.WindowState = FormWindowState.Normal;
         this.Focus(); this.Show();
+        // for the camera monitor on the screen
         timer1 = new System.Windows.Forms.Timer();
         timer1.Interval = 50;
        timer1.Tick += timer1_Tick;
@@ -705,14 +698,8 @@ public partial class mainMenu : Form
         newPic.Focus();
     }
 
-    /* private void brightnessMenu_Click(object sender, EventArgs e)
-     {// open brightness setting menu
-         Bitmap bm = capturedimage.QueryFrame().ToBitmap();
-         var brightnesssetting = new BrightnessSettings(capturedimage);
-         brightnesssetting.ShowDialog(this);
 
-     }*/
-
+    // get the center face image 
     public int getinmateface(float[,] facelist, int piccenter)
     {
         if (facelist.GetLength(0) == 1) return 0;
@@ -731,6 +718,8 @@ public partial class mainMenu : Form
 
         return closest;
     }
+
+    // move, and zoom so that our inmate face is in the middle and zoomed in.
     public void CalibrateCamera()
     {
         FaceDetectorYN InitializeFaceDetectionModel(Size inputSize) => new FaceDetectorYN(
@@ -816,6 +805,8 @@ public partial class mainMenu : Form
             livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
             livepicbox.Update();
 
+
+            // move up and down
             mugshotface = bm.ToMat();
             using var model3 = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
             model3.Detect(mugshotface, facefeatures);
@@ -872,6 +863,7 @@ public partial class mainMenu : Form
             livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
             livepicbox.Update();
 
+            // zoom in and out
             int zv = 1;
             bool isfirst = true;
             bool zoomright = false;
@@ -936,6 +928,8 @@ public partial class mainMenu : Form
         result[8] = 0xFF;
         return result;
     }
+
+    // to show message 
     public static class ErrorPrompt
     {// error or message prompt
         public static string ShowErrorMessage(string text)
@@ -961,6 +955,7 @@ public partial class mainMenu : Form
         }
     }
 
+    //calibrate camera button
     private void CalibrateButton_Click(object sender, EventArgs e)
     {
         camerastatlabel.ForeColor = Color.Red;
@@ -975,7 +970,7 @@ public partial class mainMenu : Form
         IncBrightnessButton.FlatAppearance.BorderSize = 8;
 
     }
-
+    // reset camera button
     private void resetcamerabutton_Click(object sender, EventArgs e)
     {
         camerastatlabel.ForeColor = Color.Red;
@@ -997,6 +992,7 @@ public partial class mainMenu : Form
         camerastatlabel.Text = "Ready!";
     }
 
+    //increase brightness button
     private void IncBrightnessButton_Click(object sender, EventArgs e)
     {
         using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
@@ -1014,6 +1010,7 @@ public partial class mainMenu : Form
 
     }
 
+    // decrease brightness button
     private void DecBrightnessButton_Click(object sender, EventArgs e)
     {
         using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
@@ -1030,6 +1027,8 @@ public partial class mainMenu : Form
         }
     }
 
+
+    // canera controll buttons from here
     private void ZoominButton_Click(object sender, EventArgs e)
     {
         camerastatlabel.ForeColor = Color.Red;
@@ -1219,6 +1218,7 @@ public partial class mainMenu : Form
         MediumButton.ForeColor = Color.Black;
         FastButton.ForeColor = Color.Red;
     }
+    // canera controll buttons until here
 
     private void controllerbuttonchange(bool boo)
     {
