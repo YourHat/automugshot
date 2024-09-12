@@ -33,8 +33,6 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
             label7 = new Label();
             label8 = new Label();
             pictureBox1 = new PictureBox();
@@ -84,29 +82,6 @@
             label4.Size = new Size(0, 22);
             label4.TabIndex = 3;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BackColor = SystemColors.Control;
-            label5.Font = new Font("Stencil", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.ForeColor = SystemColors.ControlDark;
-            label5.Location = new Point(1004, 681);
-            label5.Name = "label5";
-            label5.Size = new Size(321, 22);
-            label5.TabIndex = 4;
-            label5.Text = "Developed By - Yutaroh Tanaka";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Stencil", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.ForeColor = SystemColors.ControlDark;
-            label6.Location = new Point(992, 703);
-            label6.Name = "label6";
-            label6.Size = new Size(333, 22);
-            label6.TabIndex = 5;
-            label6.Text = "KCSO Advisor - Sgt. Steven Stryd";
-            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -150,13 +125,14 @@
             // label9
             // 
             label9.AutoSize = true;
+            label9.BackColor = SystemColors.Control;
             label9.Font = new Font("Stencil", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.ForeColor = SystemColors.ControlDark;
-            label9.Location = new Point(1117, 725);
+            label9.ForeColor = SystemColors.ButtonHighlight;
+            label9.Location = new Point(1219, 667);
             label9.Name = "label9";
-            label9.Size = new Size(208, 13);
+            label9.Size = new Size(97, 26);
             label9.TabIndex = 11;
-            label9.Text = "Kalamazoo County Sheriff's Office";
+            label9.Text = "KCSO - Y.Tanaka\r\nKCSO - S.Stryd";
             // 
             // label10
             // 
@@ -172,15 +148,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1337, 752);
+            ClientSize = new Size(1337, 713);
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox1);
             Controls.Add(label8);
             Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -199,8 +173,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private Label label5;
-        private Label label6;
         private Label label7;
         private Label label8;
         private PictureBox pictureBox1;
