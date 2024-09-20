@@ -3,6 +3,7 @@ using Emgu.CV.Dnn;
 using Emgu.CV.Face;
 using Emgu.CV.Flann;
 using Emgu.CV.Structure;
+using Hompus.VideoInputDevices;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO.Ports;
@@ -11,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace automugshot;
 
@@ -21,13 +23,11 @@ public partial class mainMenu : Form
     SideMugshot[] SideMugs; // list of side mugshot
     int selectedfront = 9;
     int selectedside = 9;
-    List<PictureBox> pblist = new List<PictureBox>(); //list of picture box for mugshots
-    List<Label> selist = new List<Label>(); // list of lables for "selected"
-
-
-    List<Label> test1list = new List<Label>(); // list of labels for eyes
-    List<Label> test2list = new List<Label>(); // list of labels for head tiltle / facing side
-    List<Label> test3list = new List<Label>(); // list of labels for facing front and left side
+    List<PictureBox> pblist; //list of picture box for mugshots
+    List<Label> selist; // list of lables for "selected"
+    List<Label> test1list; // list of labels for eyes
+    List<Label> test2list;// list of labels for head tiltle / facing side
+    List<Label> test3list; // list of labels for facing front and left side
     
 
     public VideoCapture capturedimage;
@@ -37,52 +37,12 @@ public partial class mainMenu : Form
         InitializeComponent();
         FrontMugs = new FrontMugshot[4];
         SideMugs = new SideMugshot[4];
+        pblist = new List<PictureBox>() { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5, pictureBox6, pictureBox7, pictureBox8 };
+        test1list = new List<Label>() {eye1,eye2,eye3,eye4,eye5,eye6,eye7,eye8 };
+        selist = new List<Label>() { sp1, sp2, sp3, sp4, sp5, sp6, sp7, sp8};
+        test2list = new List<Label>() { head1, head2, head3, head4, head5, head6, head7, head8 };
+        test3list = new List<Label>() { face1, face2, face3, face4, face5, face6, face7, face8 };
 
-        // add picture boxes and labels to the list created
-        pblist.Add(pictureBox1);
-        pblist.Add(pictureBox2);
-        pblist.Add(pictureBox3);
-        pblist.Add(pictureBox4);
-        pblist.Add(pictureBox5);
-        pblist.Add(pictureBox6);
-        pblist.Add(pictureBox7);
-        pblist.Add(pictureBox8);
-
-        test1list.Add(eye1);
-        test1list.Add(eye2);
-        test1list.Add(eye3);
-        test1list.Add(eye4);
-        test1list.Add(eye5);
-        test1list.Add(eye6);
-        test1list.Add(eye7);
-        test1list.Add(eye8);
-
-        test2list.Add(head1);
-        test2list.Add(head2);
-        test2list.Add(head3);
-        test2list.Add(head4);
-        test2list.Add(head5);
-        test2list.Add(head6);
-        test2list.Add(head7);
-        test2list.Add(head8);
-
-        test3list.Add(face1);
-        test3list.Add(face2);
-        test3list.Add(face3);
-        test3list.Add(face4);
-        test3list.Add(face5);
-        test3list.Add(face6);
-        test3list.Add(face7);
-        test3list.Add(face8);
-
-        selist.Add(sp1);
-        selist.Add(sp2);
-        selist.Add(sp3);
-        selist.Add(sp4);
-        selist.Add(sp5);
-        selist.Add(sp6);
-        selist.Add(sp7);
-        selist.Add(sp8);
 
         capturedimage = new VideoCapture(Settings1.Default.cameraindex); // initiate videocapture
         if (!capturedimage.IsOpened)
@@ -132,55 +92,20 @@ public partial class mainMenu : Form
         }
         camerastatlabel.ForeColor = Color.Green;
         camerastatlabel.Text = "Ready!";
-        controllerbuttonchange(Settings1.Default.controllerwork);
+     //   controllerbuttonchange(Settings1.Default.controllerwork);
 
         // UI of the buttons
+
+        var bl = new List<System.Windows.Forms.Button>() { newPic, savePics, CalibrateButton,takeFrontPic,takeSidePic,settingsMenu,helpMenu,DecBrightnessButton,IncBrightnessButton,MoveDownButton,MoveUpButton,MoveLeftButton, MoveRightButton,ZoominButton,ZoomOutButton,StopMoveButton,StopZoomButton,SlowButton,FastButton,MediumButton,resetcamerabutton};
+
+        foreach (var bu in bl)
+        {
+            bu.FlatAppearance.BorderColor = Color.Gray;
+            bu.FlatAppearance.BorderSize = 1;
+        }
+
         newPic.FlatAppearance.BorderColor = Color.Green;
         newPic.FlatAppearance.BorderSize = 8;
-        savePics.FlatAppearance.BorderColor = Color.Gray;
-        savePics.FlatAppearance.BorderSize = 1;
-        CalibrateButton.FlatAppearance.BorderColor = Color.Gray;
-        CalibrateButton.FlatAppearance.BorderSize = 1;
-        takeFrontPic.FlatAppearance.BorderColor = Color.Gray;
-        takeFrontPic.FlatAppearance.BorderSize = 1;
-        takeSidePic.FlatAppearance.BorderColor = Color.Gray;
-        takeSidePic.FlatAppearance.BorderSize = 1;
-        settingsMenu.FlatAppearance.BorderColor = Color.Gray;
-        settingsMenu.FlatAppearance.BorderSize = 1;
-        helpMenu.FlatAppearance.BorderColor = Color.Gray;
-        helpMenu.FlatAppearance.BorderSize = 1;
-        DecBrightnessButton.FlatAppearance.BorderColor = Color.Gray;
-        DecBrightnessButton.FlatAppearance.BorderSize = 1;
-        IncBrightnessButton.FlatAppearance.BorderColor = Color.Gray;
-        IncBrightnessButton.FlatAppearance.BorderSize = 1;
-        MoveDownButton.FlatAppearance.BorderColor = Color.Gray;
-        MoveDownButton.FlatAppearance.BorderSize = 1;
-        MoveUpButton.FlatAppearance.BorderColor = Color.Gray;
-        MoveUpButton.FlatAppearance.BorderSize = 1;
-        MoveLeftButton.FlatAppearance.BorderColor = Color.Gray;
-        MoveLeftButton.FlatAppearance.BorderSize = 1;
-        MoveRightButton.FlatAppearance.BorderColor = Color.Gray;
-        MoveRightButton.FlatAppearance.BorderSize = 1;
-
-        ZoominButton.FlatAppearance.BorderColor = Color.Gray;
-        ZoominButton.FlatAppearance.BorderSize = 1;
-        ZoomOutButton.FlatAppearance.BorderColor = Color.Gray;
-        ZoomOutButton.FlatAppearance.BorderSize = 1;
-        StopMoveButton.FlatAppearance.BorderColor = Color.Gray;
-        StopMoveButton.FlatAppearance.BorderSize = 1;
-        StopZoomButton.FlatAppearance.BorderColor = Color.Gray;
-        StopZoomButton.FlatAppearance.BorderSize = 1;
-        SlowButton.FlatAppearance.BorderColor = Color.Gray;
-        SlowButton.FlatAppearance.BorderSize = 1;
-        FastButton.FlatAppearance.BorderColor = Color.Gray;
-        FastButton.FlatAppearance.BorderSize = 1;
-        MediumButton.FlatAppearance.BorderColor = Color.Gray;
-        MediumButton.FlatAppearance.BorderSize = 1;
-        resetcamerabutton.FlatAppearance.BorderColor = Color.Gray;
-        resetcamerabutton.FlatAppearance.BorderSize = 1;
-
-
-  
 
     }
 
@@ -220,7 +145,7 @@ public partial class mainMenu : Form
     }
 
     // start new mugshot process button
-    private void newPic_Click(object sender, EventArgs e)
+    private async void newPic_Click(object sender, EventArgs e)
     {
 
          camerastatlabel.ForeColor = Color.Red;
@@ -254,20 +179,17 @@ public partial class mainMenu : Form
         inmateinfotextbox.Text = String.Empty;
         if (Settings1.Default.controllerwork)
         {
-            using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
-            {
-                sp.Open();
-                sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x04, 0xFF }, 0, 5);// reset the camera to the original position
-                Thread.Sleep(1000);
-                sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9); // zoom out
-                Thread.Sleep(2000);
-                sp.Close();
+
+
+            var b = await iszoomedin();
+            if(b) {
+                camerastatlabel.ForeColor = Color.Green;
+                camerastatlabel.Text = "Ready!";
+                buttoncolortogray();                                                
+                CalibrateButton.FlatAppearance.BorderColor = Color.Green;
+                CalibrateButton.FlatAppearance.BorderSize = 8;
             }
-            camerastatlabel.ForeColor = Color.Green;
-            camerastatlabel.Text = "Ready!";
-            buttoncolortogray(); 
-            CalibrateButton.FlatAppearance.BorderColor = Color.Green;
-            CalibrateButton.FlatAppearance.BorderSize = 8;
+
         }
         else
         {
@@ -280,6 +202,35 @@ public partial class mainMenu : Form
 
 
     }
+
+    private async Task<bool> iszoomedin()
+    {
+        using (var sp = new System.IO.Ports.SerialPort(Settings1.Default.controllername, 9600, Parity.None, 8, StopBits.One))
+        {
+            sp.Open();
+            sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x04, 0xFF }, 0, 5);// reset the camera to the original position
+            await Task.Delay(1000).ConfigureAwait(false);
+            sp.Write(new byte[] { 0x81, 0x01, 0x04, 0x47, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 9); // zoom out
+            
+            bool a = false;
+            byte[] buffer = new byte[7];
+            while (!a)
+            {
+              sp.Write(new byte[] { 0x81, 0x09, 0x04, 0x47, 0xFF }, 0, 5);
+              sp.Read(buffer, 0, 7);
+                if (buffer.Count(x=> x == 0x00) >= 4)
+                {
+                    a = true;
+                }
+                await Task.Delay(500).ConfigureAwait(false);
+                Debug.WriteLine(buffer[0].ToString() + " - " + buffer[1].ToString() + " - " + buffer[2].ToString() + " - " + buffer[3].ToString() + " - " + buffer[4].ToString() + " - " + buffer[5].ToString() + " - " + buffer[6].ToString() );
+            }
+            sp.Close();
+        }
+
+        return true;
+    }
+
 
     // reset all the button's UI
     private void buttoncolortogray()
@@ -720,7 +671,7 @@ public partial class mainMenu : Form
     }
 
     // move, and zoom so that our inmate face is in the middle and zoomed in.
-    public void CalibrateCamera()
+    public async Task CalibrateCamera()
     {
         FaceDetectorYN InitializeFaceDetectionModel(Size inputSize) => new FaceDetectorYN(
                     model: "face_detection_yunet_2023mar.onnx",
@@ -763,7 +714,7 @@ public partial class mainMenu : Form
                     float tempfacemiddle = face[0] + (face[2] / 2f);
                     // if (rpp != 0 && rpp != 1) inmiddle = true;
                     sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x03, 0x18, 0x18, 0x00, 0x00, 0x04, 0x08, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 15);
-                    Thread.Sleep(500);
+                    await Task.Delay(500).ConfigureAwait(false);
 
                     bm = capturedimage.QueryFrame().ToBitmap();
                     mugshotface = bm.ToMat();
@@ -782,7 +733,7 @@ public partial class mainMenu : Form
                     float tempfacemiddle = face[0] + (face[2] / 2);
 
                     sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x03, 0x18, 0x18, 0x0F, 0x0F, 0x0B, 0x08, 0x00, 0x00, 0x00, 0x00, 0xFF }, 0, 15);
-                    Thread.Sleep(500);
+                    await Task.Delay(500).ConfigureAwait(false);
                     bm = capturedimage.QueryFrame().ToBitmap();
                     mugshotface = bm.ToMat();
                     using var model2 = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
@@ -801,9 +752,8 @@ public partial class mainMenu : Form
             {
                 //return false;
             }
-            Thread.Sleep(500);
-            livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
-            livepicbox.Update();
+            await Task.Delay(1000).ConfigureAwait(false);
+
 
 
             // move up and down
@@ -817,12 +767,12 @@ public partial class mainMenu : Form
             {
                 faceint = getinmateface(facedata, mugshotface.Width / 2);
                 face = new float[] { facedata[faceint, 0], facedata[faceint, 1], facedata[faceint, 2], facedata[faceint, 3] };
-                if ((mugshotface.Height / 2f) > face[1] + (face[3]))
+                if ((mugshotface.Height / 2f) > face[1] + ((face[3])*0.7f))
                 {
-                    float tempfacemiddle = face[1] + (face[3]);
+                    float tempfacemiddle = face[1] + ((face[3]) * 0.7f);
                     // if (rpp != 0 && rpp != 1) inmiddle = true;
                     sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x03, 0x14, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x08, 0xFF }, 0, 15);
-                    Thread.Sleep(500);
+                    await Task.Delay(500).ConfigureAwait(false);
                     bm = capturedimage.QueryFrame().ToBitmap();
                     mugshotface = bm.ToMat();
                     using var model4 = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
@@ -830,17 +780,17 @@ public partial class mainMenu : Form
                     facedata = (float[,])facefeatures.GetData(jagged: true);
                     faceint = getinmateface(facedata, mugshotface.Width / 2);
                     face = new float[] { facedata[faceint, 0], facedata[faceint, 1], facedata[faceint, 2], facedata[faceint, 3] };
-                    float diffx = ( (((mugshotface.Height / 2f) -(face[1] + (face[3]))) / (((face[1] + (face[3]))- tempfacemiddle) / 5f)) * 12.4f);
+                    float diffx = ((((mugshotface.Height / 2f) - (face[1] + ((face[3]) * 0.7f))) / (((face[1] + ((face[3]) * 0.7f)) - tempfacemiddle) / 5f)) * 12.4f);
                     Debug.WriteLine(diffx.ToString());
                     var bytelist = getbfromi((short)diffx);
                     sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x03, 0x14, 0x14, 0x00, 0x00, 0x00, 0x00, bytelist[4], bytelist[5], bytelist[6], bytelist[7], 0xFF }, 0, 15);
                 }
                 else
                 {
-                    float tempfacemiddle = face[1] + (face[3]);
+                    float tempfacemiddle = face[1] + ((face[3]) * 0.7f);
 
-                    sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x03, 0x14, 0x14,  0x00, 0x00, 0x00, 0x00, 0x0F, 0x0F, 0x0B, 0x08, 0xFF }, 0, 15);
-                    Thread.Sleep(500);
+                    sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x03, 0x14, 0x14, 0x00, 0x00, 0x00, 0x00, 0x0F, 0x0F, 0x0B, 0x08, 0xFF }, 0, 15);
+                    await Task.Delay(500).ConfigureAwait(false);
                     bm = capturedimage.QueryFrame().ToBitmap();
                     mugshotface = bm.ToMat();
                     using var model4 = InitializeFaceDetectionModel(new Size(mugshotface.Width, mugshotface.Height));
@@ -848,10 +798,10 @@ public partial class mainMenu : Form
                     facedata = (float[,])facefeatures.GetData(jagged: true);
                     faceint = getinmateface(facedata, mugshotface.Width / 2);
                     face = new float[] { facedata[faceint, 0], facedata[faceint, 1], facedata[faceint, 2], facedata[faceint, 3] };
-                    float diffx = ((face[1] + (face[3])) - (mugshotface.Height / 2f)) / ((tempfacemiddle-(face[1] + face[3])) / 5f);
+                    float diffx = ((face[1] + ((face[3]) * 0.7f)) - (mugshotface.Height / 2f)) / ((tempfacemiddle - (face[1] + ((face[3]) * 0.7f))) / 5f);
                     Debug.WriteLine(diffx.ToString());
                     var bytelist = getbfromi((short)(65535 - (diffx * 12.4f)));
-                    sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x03, 0x14, 0x14,  0x00, 0x00, 0x00, 0x00, bytelist[4], bytelist[5], bytelist[6], bytelist[7], 0xFF }, 0, 15);
+                    sp.Write(new byte[] { 0x81, 0x01, 0x06, 0x03, 0x14, 0x14, 0x00, 0x00, 0x00, 0x00, bytelist[4], bytelist[5], bytelist[6], bytelist[7], 0xFF }, 0, 15);
                 }
 
             }
@@ -859,9 +809,8 @@ public partial class mainMenu : Form
             {
                 //return false;
             }
-            Thread.Sleep(500);
-            livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
-            livepicbox.Update();
+            await Task.Delay(1000).ConfigureAwait(false);
+
 
             // zoom in and out
             int zv = 1;
@@ -882,7 +831,7 @@ public partial class mainMenu : Form
                 {
                     faceint = getinmateface(facedata, mugshotface.Width / 2);
                     face = new float[] { facedata[faceint, 0], facedata[faceint, 1], facedata[faceint, 2], facedata[faceint, 3] };
-                    if ((mugshotface.Height) > face[3] * 4)
+                    if ((mugshotface.Height) > face[3] * 2)
                     {
                         sp.Write(getbfromi((short)(zoomvalue * zv)), 0, 9);
                         isfirst = false;
@@ -892,7 +841,7 @@ public partial class mainMenu : Form
                         
                         zoomright = true;
                         if(!isfirst)
-                            sp.Write(getbfromi((short)((float)zoomvalue * 0.9f * (zv-2))), 0, 9);
+                            sp.Write(getbfromi((short)((float)zoomvalue * 0.8f * (zv-2))), 0, 9);
                     }
                 }
                 else
@@ -901,9 +850,8 @@ public partial class mainMenu : Form
                 }
                 zv++;
                 zoomvalue = (short)((float)zoomvalue / 0.99f);
-                Thread.Sleep(200);
-                livepicbox.Image = new Bitmap(capturedimage.QueryFrame().ToBitmap(), new Size(386, 216)) ?? null;
-                livepicbox.Update();
+                await Task.Delay(300).ConfigureAwait(false);
+ 
                 if (zv > 9) zoomright = true;
             }
             
@@ -956,11 +904,12 @@ public partial class mainMenu : Form
     }
 
     //calibrate camera button
-    private void CalibrateButton_Click(object sender, EventArgs e)
+    async private void CalibrateButton_Click(object sender, EventArgs e)
     {
         camerastatlabel.ForeColor = Color.Red;
         camerastatlabel.Text = "Calibrating...";
-        CalibrateCamera();
+        await CalibrateCamera();
+        await CalibrateCamera();
         camerastatlabel.ForeColor = Color.Green;
         camerastatlabel.Text = "Ready!";
         buttoncolortogray();
