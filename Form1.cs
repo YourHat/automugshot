@@ -28,7 +28,7 @@ public partial class mainMenu : Form
     List<Label> test1list; // list of labels for eyes
     List<Label> test2list;// list of labels for head tiltle / facing side
     List<Label> test3list; // list of labels for facing front and left side
-    
+    List<System.Windows.Forms.Button> bl;
 
     public VideoCapture capturedimage;
 
@@ -96,7 +96,7 @@ public partial class mainMenu : Form
 
         // UI of the buttons
 
-        var bl = new List<System.Windows.Forms.Button>() { newPic, savePics, CalibrateButton,takeFrontPic,takeSidePic,settingsMenu,helpMenu,DecBrightnessButton,IncBrightnessButton,MoveDownButton,MoveUpButton,MoveLeftButton, MoveRightButton,ZoominButton,ZoomOutButton,StopMoveButton,StopZoomButton,SlowButton,FastButton,MediumButton,resetcamerabutton};
+        bl = new List<System.Windows.Forms.Button>() { newPic, savePics, CalibrateButton,takeFrontPic,takeSidePic,settingsMenu,helpMenu,DecBrightnessButton,IncBrightnessButton,MoveDownButton,MoveUpButton,MoveLeftButton, MoveRightButton,ZoominButton,ZoomOutButton,StopMoveButton,StopZoomButton,SlowButton,FastButton,MediumButton,resetcamerabutton};
 
         foreach (var bu in bl)
         {
@@ -151,6 +151,10 @@ public partial class mainMenu : Form
          camerastatlabel.ForeColor = Color.Red;
         camerastatlabel.Text = "Getting Ready...";
          camerastatlabel.Update();
+        foreach (var b in bl)
+        {
+            b.Enabled = false;
+        }
 
         // reset pictures and inmate identifier text box
         for (int i = 0; i < pblist.Count; i++)
@@ -200,7 +204,10 @@ public partial class mainMenu : Form
             takeFrontPic.FlatAppearance.BorderSize = 8;
         }
 
-
+        foreach (var b in bl)
+        {
+            b.Enabled = true;
+        }
     }
 
     private async Task<bool> iszoomedin()
@@ -222,13 +229,14 @@ public partial class mainMenu : Form
                 {
                     a = true;
                 }
-                await Task.Delay(500).ConfigureAwait(false);
+                await Task.Delay(100).ConfigureAwait(false);
                 Debug.WriteLine(buffer[0].ToString() + " - " + buffer[1].ToString() + " - " + buffer[2].ToString() + " - " + buffer[3].ToString() + " - " + buffer[4].ToString() + " - " + buffer[5].ToString() + " - " + buffer[6].ToString() );
             }
             sp.Close();
         }
 
         return true;
+
     }
 
 
@@ -441,7 +449,10 @@ public partial class mainMenu : Form
     {
         //take picture of the side
         //take four
-
+        foreach (var b in bl)
+        {
+            b.Enabled = false;
+        }
         bool istheregoodpicture = false;
         camerastatlabel.ForeColor = Color.Red;
         camerastatlabel.Text = "Taking mugshots...";
@@ -496,11 +507,19 @@ public partial class mainMenu : Form
             savePics.FlatAppearance.BorderColor = Color.Green;
             savePics.FlatAppearance.BorderSize = 8;
         }
+        foreach (var b in bl)
+        {
+            b.Enabled = true;
+        }
     }
 
     //take front pictures button
     private void takeFrontPic_Click(object sender, EventArgs e)
     {
+        foreach (var b in bl)
+        {
+            b.Enabled = false;
+        }
         //take picture of the front
         //take four
         bool istheregoodpicture = false;
@@ -556,7 +575,10 @@ public partial class mainMenu : Form
             takeSidePic.FlatAppearance.BorderColor = Color.Green;
             takeSidePic.FlatAppearance.BorderSize = 8;
         }
-
+        foreach (var b in bl)
+        {
+            b.Enabled = true;
+        }
 
     }
 
@@ -752,7 +774,7 @@ public partial class mainMenu : Form
             {
                 //return false;
             }
-            await Task.Delay(1000).ConfigureAwait(false);
+            await Task.Delay(500).ConfigureAwait(false);
 
 
 
@@ -809,7 +831,7 @@ public partial class mainMenu : Form
             {
                 //return false;
             }
-            await Task.Delay(1000).ConfigureAwait(false);
+            await Task.Delay(500).ConfigureAwait(false);
 
 
             // zoom in and out
@@ -847,6 +869,8 @@ public partial class mainMenu : Form
                 else
                 {
                     zoomright = true;
+                    if (!isfirst)
+                        sp.Write(getbfromi((short)((float)zoomvalue * 0.8f * (zv - 2))), 0, 9);
                 }
                 zv++;
                 zoomvalue = (short)((float)zoomvalue / 0.99f);
@@ -906,6 +930,10 @@ public partial class mainMenu : Form
     //calibrate camera button
     async private void CalibrateButton_Click(object sender, EventArgs e)
     {
+        foreach (var b in bl)
+        {
+            b.Enabled = false;
+        }
         camerastatlabel.ForeColor = Color.Red;
         camerastatlabel.Text = "Calibrating...";
         await CalibrateCamera();
@@ -917,7 +945,10 @@ public partial class mainMenu : Form
         DecBrightnessButton.FlatAppearance.BorderSize = 8;
         IncBrightnessButton.FlatAppearance.BorderColor = Color.Green;
         IncBrightnessButton.FlatAppearance.BorderSize = 8;
-
+        foreach (var b in bl)
+        {
+            b.Enabled = true;
+        }
     }
     // reset camera button
     private void resetcamerabutton_Click(object sender, EventArgs e)
