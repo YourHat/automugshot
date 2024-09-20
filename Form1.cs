@@ -332,11 +332,11 @@ public partial class mainMenu : Form
                     if (Settings1.Default.filename == 0)
                     {
                         string inmateinfo = inmateinfotextbox.Text.Trim().Replace(" ", "_");
+                        string pattern = @"^[a-zA-Z0-9\-',_]*$";
                         if (inmateinfo == string.Empty || inmateinfo == "") // check and make sure that inmate identifier is typed
                         {
                             string promptValue = ErrorPrompt.ShowErrorMessage("Type Inmate's identifier such as inmate number or name before saving!");
-                        }
-                        else
+                        }else if(Regex.IsMatch(inmateinfo, pattern))
                         {
                             FrontMugs[selectedfront].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MMdd_HHmm_") + inmateinfo + "_Front.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
                             SideMugs[selectedside - 4].croppedbm.Save(@"" + Settings1.Default.filepathforpic + "\\" + DateTime.Now.ToString("yyyy_MMdd_HHmm_") + inmateinfo + "_Side.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -348,6 +348,10 @@ public partial class mainMenu : Form
                             if (Settings1.Default.openfolder == true)
                                 Process.Start("explorer.exe", @"" + Settings1.Default.filepathforpic);
                             ErrorPrompt.ShowErrorMessage("Mugshots Saved!");
+                        }
+                        else
+                        {
+                            string promptValue = ErrorPrompt.ShowErrorMessage("type inmate info with allowed characters only => [a ~ z], [A ~ Z], [0 ~ 9], [ _ ' , -] ");
                         }
                     }
                     else
@@ -494,7 +498,7 @@ public partial class mainMenu : Form
                 istheregoodpicture = true;
             }
             pblist[i + 4].Update();
-            Thread.Sleep(200); // wait 500 millisecond for the next mugshot
+            Thread.Sleep(100); // wait 500 millisecond for the next mugshot
 
         }
         //   }
@@ -564,7 +568,7 @@ public partial class mainMenu : Form
                 istheregoodpicture = true;
             }
             pblist[i].Update();
-            Thread.Sleep(200);
+            Thread.Sleep(100);
         }
 
         camerastatlabel.ForeColor = Color.Green;
